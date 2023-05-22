@@ -15,10 +15,13 @@ public class Warehouse {
 
 	private int maxCap;
 	private ArrayList<String> items = new ArrayList<>();
+	private String item;
 	
-	public Warehouse(int maxCap, ArrayList<String> items) {
+	
+	public Warehouse(int maxCap, ArrayList<String> items, String item) {
 		this.maxCap = maxCap;
 		this.items = items;
+		this.item = item;
 		
 	}
 	
@@ -26,8 +29,9 @@ public class Warehouse {
 		// Displays all of the items currently being stored in the warehouse
 	}
 	
-	public void addItems() {
+	public void addItem() {
 		// Feature for adding a new item to the warehouse
+		
 	}
 	
 	public void deleteItems() {
@@ -44,6 +48,22 @@ public class Warehouse {
 	
 	public void setMaxCap(int maxCap) {
 		this.maxCap = maxCap;
+	}
+	
+	public String getItem() {
+		return this.item;
+	}
+	
+	public void setItem(String item) {
+		this.item = item;
+	}
+	
+	public ArrayList<String> getItems(){
+		return this.items;
+	}
+	
+	public void setItems(ArrayList<String> items) {
+		this.items = items;
 	}
 	
 }
