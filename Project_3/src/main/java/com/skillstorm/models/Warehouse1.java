@@ -88,10 +88,13 @@ public class Warehouse1 {
 		return "Warehouse1 [productId=" + this.productId + ", productName=" + this.productName + ", productPrice=" + this.productPrice
 				+ ", quantity=" + this.quantity + "]";
 	}
-	
+
 	
 	
 	
 	
 
+
 }
+
+

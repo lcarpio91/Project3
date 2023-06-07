@@ -12,3 +12,4 @@ public class Warehouse1Service {
 	private Warehouse1Repository repo;
 
 }
+

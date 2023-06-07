@@ -1,5 +1,8 @@
 package com.skillstorm.controllers;
 
+
+
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.Warehouse3;
+
 import com.skillstorm.repositories.Warehouse3Repository;
 
 @RestController
@@ -26,6 +30,10 @@ public class Warehouse3Controller {
 	
 	@Autowired
 	private Warehouse3Repository repo;
+
+
+
+
 	
 	// displays all products
 	@GetMapping
@@ -107,3 +115,4 @@ public class Warehouse3Controller {
 	}
 
 }
+
