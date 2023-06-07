@@ -2,7 +2,7 @@ package com.skillstorm.repositories;
 
 
 import org.springframework.data.jpa.repository.Query;
-=======
+
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -23,7 +23,7 @@ public interface Warehouse1Repository extends CrudRepository<Warehouse1, Integer
 	// random comment
 	
 }
-=======
 
-}
+
+
 

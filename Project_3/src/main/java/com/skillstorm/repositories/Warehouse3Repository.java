@@ -1,7 +1,7 @@
 package com.skillstorm.repositories;
 
 import org.springframework.data.jpa.repository.Query;
-=======
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +18,4 @@ public interface Warehouse3Repository extends CrudRepository<Warehouse3, Integer
 	public Iterable<Warehouse3> findByProductName(String searchString);
 
 }
-=======
 
-}

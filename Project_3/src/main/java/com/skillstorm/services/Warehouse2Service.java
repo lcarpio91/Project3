@@ -12,5 +12,3 @@ public class Warehouse2Service {
 	private Warehouse2Repository repo;
 
 }
-=======
-}

@@ -1,7 +1,6 @@
 package com.skillstorm.repositories;
 
 import org.springframework.data.jpa.repository.Query;
-=======
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +16,4 @@ public interface Warehouse4Repository extends CrudRepository<Warehouse4, Integer
 	@Query (value = "SELECT * FROM warehouse4 WHERE Product_name LIKE %?1%", nativeQuery = true)
 	public Iterable<Warehouse4> findByProductName(String searchString);
 	
-}
-=======
 }
