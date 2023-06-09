@@ -47,13 +47,13 @@ public class Warehouse4Controller {
 
 	// adds a product
 	@PostMapping
-	public ResponseEntity<String> addProduct(@RequestBody Warehouse4 warehouse4) {
+	public ResponseEntity<Warehouse4> addProduct(@RequestBody Warehouse4 warehouse4) {
 		if (repo.existsById(warehouse4.getProductId())) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("Product with id " + warehouse4.getProductId() + " already exist.");
+					.body(warehouse4);
 		} else {
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body("Product with id " + repo.save(warehouse4).getProductId() + " has been inserted.");
+					.body(warehouse4);
 		}
 	}
 
@@ -100,13 +100,13 @@ public class Warehouse4Controller {
 
 	// deletes the product by body
 	@DeleteMapping
-	public ResponseEntity<String> deleteProductByBody(@RequestBody Warehouse4 warehouse4) {
+	public ResponseEntity<Warehouse4> deleteProductByBody(@RequestBody Warehouse4 warehouse4) {
 		if (repo.findById(warehouse4.getProductId()).isPresent()
 				&& warehouse4.equals(repo.findById(warehouse4.getProductId()).get())) {
 			repo.delete(warehouse4);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product was successfully deleted.");
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(warehouse4);
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product does not exist.");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(warehouse4);
 		}
 	}
 
