@@ -1,6 +1,5 @@
 package com.skillstorm.controllers;
 
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,93 +24,101 @@ import com.skillstorm.repositories.Warehouse1Repository;
 @RequestMapping("/warehouse1")
 @CrossOrigin("*")
 public class Warehouse1Controller {
-	
+
 	@Autowired
 	private Warehouse1Repository repo;
 
-
-
-
-	
 	// displays all products
 	@GetMapping
-	public Iterable<Warehouse1> getAllProducts(){
+	public Iterable<Warehouse1> getAllProducts() {
 		return repo.findAll();
 	}
-	
+
 	// displays product by ID
 	@GetMapping("/{id}")
 	public Warehouse1 getProductById(@PathVariable int id) {
 		Optional<Warehouse1> outcome = repo.findById(id);
-		if(outcome.isPresent()) {
+		if (outcome.isPresent()) {
 			return outcome.get();
 		} else {
 			return null;
 		}
 	}
-	
+
 	// adds a product
 	@PostMapping
-	public ResponseEntity<String> addProduct(@RequestBody Warehouse1 warehouse1){
-		if(repo.existsById(warehouse1.getProductId())) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + warehouse1.getProductId() + " already exist.");
+	public ResponseEntity<String> addProduct(@RequestBody Warehouse1 warehouse1) {
+		if (repo.existsById(warehouse1.getProductId())) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body("Product with id " + warehouse1.getProductId() + " already exist.");
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Product with id " + repo.save(warehouse1).getProductId() + " has been inserted.");
+			return ResponseEntity.status(HttpStatus.CREATED)
+					.body("Product with id " + repo.save(warehouse1).getProductId() + " has been inserted.");
 		}
 	}
-	
+
+	// updates a product
+	@PutMapping
+	public Warehouse1 updateProduct1(@RequestBody Warehouse1 warehouse1) {
+		return repo.save(warehouse1);
+	}
+
 	// updates a product by ID
 	@PutMapping("/{id}")
 	public ResponseEntity<String> updateProduct(@PathVariable int id,
-												@RequestParam(name = "productName", required = false) String productName,
-												@RequestParam(name = "productPrice", required = false) String productPrice,
-												@RequestParam(name = "quantity", required = false) String quantity){
-		
-		if(repo.findById(id).isPresent()) {
-			
+			@RequestParam(name = "productName", required = false) String productName,
+			@RequestParam(name = "productPrice", required = false) String productPrice,
+			@RequestParam(name = "quantity", required = false) String quantity,
+			@RequestParam(name = "upc", required = false) String upc) {
+
+		if (repo.findById(id).isPresent()) {
+
 			Warehouse1 temp = repo.findById(id).get();
-			
-			if(productName != null) {
+
+			if (productName != null) {
 				temp.setProductName(productName);
 			}
-			
-			if(productPrice != null) {
+
+			if (productPrice != null) {
 				temp.setProductPrice(Double.valueOf(productPrice));
 			}
-			
-			if(quantity != null) {
+
+			if (quantity != null) {
 				temp.setQuantity(Integer.valueOf(quantity));
 			}
 			
-			return ResponseEntity.status(HttpStatus.OK).body("Product with id " + repo.save(temp).getProductId() + " has been updated.");
+			if(upc != null) {
+				temp.setUpc(upc);
+			}
+
+			return ResponseEntity.status(HttpStatus.OK)
+					.body("Product with id " + repo.save(temp).getProductId() + " has been updated.");
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
 		}
 	}
-	
+
 	// deletes the product by body
 	@DeleteMapping
-	public ResponseEntity<String> deleteProductByBody(@RequestBody Warehouse1 warehouse1){
-		if(repo.findById(warehouse1.getProductId()).isPresent() && 
-				warehouse1.equals(repo.findById(warehouse1.getProductId()).get())) {
+	public ResponseEntity<String> deleteProductByBody(@RequestBody Warehouse1 warehouse1) {
+		if (repo.findById(warehouse1.getProductId()).isPresent()
+				&& warehouse1.equals(repo.findById(warehouse1.getProductId()).get())) {
 			repo.delete(warehouse1);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product was successfully deleted.");
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product does not exist.");
 		}
 	}
-	
+
 	// deletes a product by ID
 	@DeleteMapping("{/id}")
-	public ResponseEntity<String> deleteProductbyId(@PathVariable int id){
-		if(repo.existsById(id)) {
+	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+		if (repo.existsById(id)) {
 			repo.deleteById(id);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
 		}
 	}
-	
-	
 
 }
