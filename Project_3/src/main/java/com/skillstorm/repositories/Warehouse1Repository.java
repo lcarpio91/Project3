@@ -20,7 +20,8 @@ public interface Warehouse1Repository extends CrudRepository<Warehouse1, Integer
 	@Query (value = "SELECT * FROM warehouse1 WHERE Product_name LIKE %?1%", nativeQuery = true)
 	public Iterable<Warehouse1> findByProductName(String searchString);
 	
-	// random comment
+	@Query (value = "SELECT * FROM warehouse1 WHERE UPC LIKE %?1%", nativeQuery = true)
+	public Iterable<Warehouse1> findByUPC(String searchString);
 	
 }
 
