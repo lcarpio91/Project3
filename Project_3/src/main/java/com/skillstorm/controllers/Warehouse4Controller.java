@@ -44,16 +44,21 @@ public class Warehouse4Controller {
 			return null;
 		}
 	}
-
+	
+	// displays product by ID
+	public Iterable<Warehouse4> getProductByUPC(String upc){
+		return repo.findByUPC(upc);
+	}
+	
 	// adds a product
 	@PostMapping
-	public ResponseEntity<Warehouse4> addProduct(@RequestBody Warehouse4 warehouse4) {
+	public ResponseEntity<String> addProduct(@RequestBody Warehouse4 warehouse4) {
 		if (repo.existsById(warehouse4.getProductId())) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(warehouse4);
+					.body("Product with id " + warehouse4.getProductId() + " already exist.");
 		} else {
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(warehouse4);
+					.body("Product with id " + repo.save(warehouse4).getProductId() + " has been inserted.");
 		}
 	}
 
@@ -100,13 +105,13 @@ public class Warehouse4Controller {
 
 	// deletes the product by body
 	@DeleteMapping
-	public ResponseEntity<Warehouse4> deleteProductByBody(@RequestBody Warehouse4 warehouse4) {
+	public ResponseEntity<String> deleteProductByBody(@RequestBody Warehouse4 warehouse4) {
 		if (repo.findById(warehouse4.getProductId()).isPresent()
 				&& warehouse4.equals(repo.findById(warehouse4.getProductId()).get())) {
 			repo.delete(warehouse4);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(warehouse4);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product was successfully deleted.");
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(warehouse4);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product does not exist.");
 		}
 	}
 
