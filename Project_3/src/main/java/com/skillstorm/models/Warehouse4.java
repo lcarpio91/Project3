@@ -12,29 +12,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "warehouse4")
 public class Warehouse4 {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Product_ID")
 	private int productId;
-	
+
 	@Column(name = "Product_name")
 	private String productName;
-	
+
 	@Column(name = "Product_Price")
 	private double productPrice;
-	
+
 	@Column(name = "Quantity")
 	private int quantity;
-	
+
+	@Column(name = "UPC")
+	private String upc;
+
 	public Warehouse4() {}
 
-	public Warehouse4(int productId, String productName, double productPrice, int quantity) {
+	public Warehouse4(int productId, String productName, double productPrice, int quantity, String upc) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.quantity = quantity;
+		this.upc = upc;
 	}
 
 	public int getProductId() {
@@ -69,6 +73,14 @@ public class Warehouse4 {
 		this.quantity = quantity;
 	}
 
+	public String getUpc() {
+		return this.upc;
+	}
+
+	public void setUpc(String upc) {
+		this.upc = upc;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -80,21 +92,14 @@ public class Warehouse4 {
 		Warehouse4 other = (Warehouse4) obj;
 		return productId == other.productId && Objects.equals(productName, other.productName)
 				&& Double.doubleToLongBits(productPrice) == Double.doubleToLongBits(other.productPrice)
-				&& quantity == other.quantity;
+				&& quantity == other.quantity && Objects.equals(upc, other.upc);
 	}
 
 	@Override
 	public String toString() {
-		return "Warehouse4 [productId=" + this.productId + ", productName=" + this.productName + ", productPrice=" + this.productPrice
-				+ ", quantity=" + this.quantity + "]";
+		return "Warehouse4 [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", quantity=" + quantity + ", upc=" + upc + "]";
 	}
-	
-	
-	
-	
-	
-	
-
 
 }
 
