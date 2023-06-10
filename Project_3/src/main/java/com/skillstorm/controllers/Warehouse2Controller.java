@@ -46,12 +46,15 @@ public class Warehouse2Controller {
 	}
 	
 	// displays product by UPC
-	// needs to have a different endpoint because @GetMapping already exist in method getAllProducts()
-	// needs something like @GetMapping("/{UPC}")
-//	@GetMapping
-//	public Iterable<Warehouse2> getProductByUPC(String upc) {
-//		return repo.findByUPC(upc);
-//	}
+	// okay Ernesto I figured it out it works let me know if you like it
+	@GetMapping("/upc/{upc}")
+	public Warehouse2 getProductByUPC(@PathVariable String upc) {
+		Iterable<Warehouse2> outcomes = repo.findByUPC(upc);
+		for (Warehouse2 outcome : outcomes) {
+			return outcome;
+		}
+			return null;
+		}
 
 	// adds a product
 	@PostMapping
@@ -72,6 +75,7 @@ public class Warehouse2Controller {
 	}
 
 	// updates a product by ID
+	// crashes the server need to figure out why
 //	@PutMapping("/{id}")
 //	public ResponseEntity<String> updateProduct(@PathVariable int id,
 //			@RequestParam(name = "productName", required = false) String productName,
@@ -119,6 +123,7 @@ public class Warehouse2Controller {
 	}
 
 	// deletes a product by ID
+	// crashes the server need to figure out why
 //	@DeleteMapping("{/id}")
 //	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
 //		if (repo.existsById(id)) {
