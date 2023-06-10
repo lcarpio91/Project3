@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skillstorm.models.Warehouse3;
 import com.skillstorm.models.Warehouse4;
 
 import com.skillstorm.repositories.Warehouse4Repository;
@@ -45,12 +46,16 @@ public class Warehouse4Controller {
 		}
 	}
 	
-	// displays product by ID
-	// needs to have a different endpoint because @GetMapping already exist in method getAllProducts()
-	// needs something like @GetMapping("/{UPC}")
-//	public Iterable<Warehouse4> getProductByUPC(String upc){
-//		return repo.findByUPC(upc);
-//	}
+	// displays product by UPC
+	// okay Ernesto I figured it out it works let me know if you like it
+	@GetMapping("/upc/{upc}")
+	public Warehouse4 getProductByUPC(@PathVariable String upc) {
+		Iterable<Warehouse4> outcomes = repo.findByUPC(upc);
+		for (Warehouse4 outcome : outcomes) {
+			return outcome;
+		}
+			return null;
+		}
 	
 	// adds a product
 	@PostMapping
@@ -71,6 +76,7 @@ public class Warehouse4Controller {
 	}
 
 	// updates a product by ID
+	// crashes the server need to figure out why
 //	@PutMapping("/{id}")
 //	public ResponseEntity<String> updateProduct(@PathVariable int id,
 //			@RequestParam(name = "productName", required = false) String productName,
@@ -118,6 +124,7 @@ public class Warehouse4Controller {
 	}
 
 	// deletes a product by ID
+	// crashes the server need to figure out why
 //	@DeleteMapping("{/id}")
 //	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
 //		if (repo.existsById(id)) {
