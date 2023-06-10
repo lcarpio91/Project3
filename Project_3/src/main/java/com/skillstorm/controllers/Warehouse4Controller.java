@@ -46,9 +46,11 @@ public class Warehouse4Controller {
 	}
 	
 	// displays product by ID
-	public Iterable<Warehouse4> getProductByUPC(String upc){
-		return repo.findByUPC(upc);
-	}
+	// needs to have a different endpoint because @GetMapping already exist in method getAllProducts()
+	// needs something like @GetMapping("/{UPC}")
+//	public Iterable<Warehouse4> getProductByUPC(String upc){
+//		return repo.findByUPC(upc);
+//	}
 	
 	// adds a product
 	@PostMapping
@@ -69,39 +71,39 @@ public class Warehouse4Controller {
 	}
 
 	// updates a product by ID
-	@PutMapping("/{id}")
-	public ResponseEntity<String> updateProduct(@PathVariable int id,
-			@RequestParam(name = "productName", required = false) String productName,
-			@RequestParam(name = "productPrice", required = false) String productPrice,
-			@RequestParam(name = "quantity", required = false) String quantity,
-			@RequestParam(name = "upc", required = false) String upc) {
-
-		if (repo.findById(id).isPresent()) {
-
-			Warehouse4 temp = repo.findById(id).get();
-
-			if (productName != null) {
-				temp.setProductName(productName);
-			}
-
-			if (productPrice != null) {
-				temp.setProductPrice(Double.valueOf(productPrice));
-			}
-
-			if (quantity != null) {
-				temp.setQuantity(Integer.valueOf(quantity));
-			}
-
-			if (upc != null) {
-				temp.setUpc(upc);
-			}
-
-			return ResponseEntity.status(HttpStatus.OK)
-					.body("Product with id " + repo.save(temp).getProductId() + " has been updated.");
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
-		}
-	}
+//	@PutMapping("/{id}")
+//	public ResponseEntity<String> updateProduct(@PathVariable int id,
+//			@RequestParam(name = "productName", required = false) String productName,
+//			@RequestParam(name = "productPrice", required = false) String productPrice,
+//			@RequestParam(name = "quantity", required = false) String quantity,
+//			@RequestParam(name = "upc", required = false) String upc) {
+//
+//		if (repo.findById(id).isPresent()) {
+//
+//			Warehouse4 temp = repo.findById(id).get();
+//
+//			if (productName != null) {
+//				temp.setProductName(productName);
+//			}
+//
+//			if (productPrice != null) {
+//				temp.setProductPrice(Double.valueOf(productPrice));
+//			}
+//
+//			if (quantity != null) {
+//				temp.setQuantity(Integer.valueOf(quantity));
+//			}
+//
+//			if (upc != null) {
+//				temp.setUpc(upc);
+//			}
+//
+//			return ResponseEntity.status(HttpStatus.OK)
+//					.body("Product with id " + repo.save(temp).getProductId() + " has been updated.");
+//		} else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
+//		}
+//	}
 
 	// deletes the product by body
 	@DeleteMapping
@@ -116,15 +118,15 @@ public class Warehouse4Controller {
 	}
 
 	// deletes a product by ID
-	@DeleteMapping("{/id}")
-	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
-		if (repo.existsById(id)) {
-			repo.deleteById(id);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
-		}
-	}
+//	@DeleteMapping("{/id}")
+//	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+//		if (repo.existsById(id)) {
+//			repo.deleteById(id);
+//			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
+//		} else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
+//		}
+//	}
 
 }
 
