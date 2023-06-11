@@ -47,6 +47,7 @@ public class Warehouse1Controller {
 	
 	// displays product by UPC
 	// okay Ernesto I figured it out it works let me know if you like it
+	// Ernesto is pleasantly surprised
 	@GetMapping("/upc/{upc}")
 	public Warehouse1 getProductByUPC(@PathVariable String upc) {
 		Iterable<Warehouse1> outcomes = repo.findByUPC(upc);
@@ -123,15 +124,14 @@ public class Warehouse1Controller {
 	}
 
 	// deletes a product by ID
-	// crashes the server need to figure out why
-//	@DeleteMapping("{/id}")
-//	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
-//		if (repo.existsById(id)) {
-//			repo.deleteById(id);
-//			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
-//		} else {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
-//		}
-//	}
+	@DeleteMapping("/id/{id}")
+	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+		if (repo.existsById(id)) {
+			repo.deleteById(id);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
+		}
+	}
 
 }
