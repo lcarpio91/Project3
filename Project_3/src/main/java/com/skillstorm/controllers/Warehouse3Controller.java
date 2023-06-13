@@ -78,7 +78,7 @@ public class Warehouse3Controller {
 	// updates a product by ID
 	// goes through but doesn't actually update (or the update doesn't reflect in DB).
 	@PutMapping("/id/{id}")
-	public ResponseEntity<String> updateProduct(@PathVariable int id,
+	public ResponseEntity<Warehouse3> updateProduct(@PathVariable int id,
 			@RequestParam(name = "productName", required = false) String productName,
 			@RequestParam(name = "productPrice", required = false) String productPrice,
 			@RequestParam(name = "quantity", required = false) String quantity,
@@ -104,10 +104,9 @@ public class Warehouse3Controller {
 				temp.setUpc(upc);
 			}
 
-			return ResponseEntity.status(HttpStatus.OK)
-					.body("Product with id " + repo.save(temp).getProductId() + " has been updated.");
+			return ResponseEntity.status(HttpStatus.OK).body(repo.save(temp));
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
 	}
 
