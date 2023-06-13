@@ -20,8 +20,23 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + 'warehouse1',
+  getAllProductsW1(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse1,
+                              { observe: 'response' });
+  }
+
+  getAllProductsW2(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse2,
+                              { observe: 'response' });
+  }
+
+  getAllProductsW3(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse3,
+                              { observe: 'response' });
+  }
+
+  getAllProductsW4(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse4,
                               { observe: 'response' });
   }
 }

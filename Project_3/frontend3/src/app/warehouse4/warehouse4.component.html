@@ -5,4 +5,33 @@
             
         </div>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>UPC</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <ng-container *ngFor="let warehouse4 of localWarehouse4">
+
+                <tr>
+                    <td>{{ warehouse4.productId }}</td>
+                    <td>{{ warehouse4.productName}}</td>
+                    <td>{{ warehouse4.productPrice }}</td>
+                    <td>{{ warehouse4.quantity }}</td>
+                    <td>{{ warehouse4.upc }}</td>
+                </tr>
+
+            </ng-container>
+
+
+        </tbody>
+
+    </table>
 </section>

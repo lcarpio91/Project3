@@ -12,12 +12,12 @@ export class Warehouse1Component {
   localWarehouse1: any = [];
 
   constructor(private backendService: BackendService) {
-    this.getAllProducts();
+    this.getAllProductsW1();
   }
 
-  getAllProducts(): void {
+  getAllProductsW1(): void {
     this.localWarehouse1 = [];
-    this.backendService.getAllProducts().subscribe((data) => {
+    this.backendService.getAllProductsW1().subscribe((data) => {
 
       console.log(data.body);
       for(let warehouse1 of data.body) {
