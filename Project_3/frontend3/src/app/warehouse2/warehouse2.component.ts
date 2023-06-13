@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../service/backend.service';
 import { Warehouse2 } from '../model/warehouse2';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-warehouse2',
@@ -10,7 +12,8 @@ import { Warehouse2 } from '../model/warehouse2';
 export class Warehouse2Component {
   localWarehouse2: any = [];
 
-  constructor(private backendService: BackendService) {
+  constructor(private backendService: BackendService,
+              private router: Router) {
    this.getAllProductsW2();
   }
 
@@ -29,5 +32,9 @@ export class Warehouse2Component {
 
       }
     });
+  }
+
+  getProductDetails(productId: number): void {
+    this.router.navigate(['warehouse2/details/' + productId]);
   }
 }
