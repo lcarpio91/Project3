@@ -57,7 +57,7 @@ public class Warehouse3Controller {
 			return null;
 		}
 
-	// adds a product
+	// adds a product by body
 	@PostMapping
 	public ResponseEntity<Warehouse3> addProduct(@RequestBody Warehouse3 warehouse3) {
 		if (repo.existsById(warehouse3.getProductId())) {
@@ -69,14 +69,13 @@ public class Warehouse3Controller {
 		}
 	}
 
-	// updates a product
+	// updates a product by body
 	@PutMapping
 	public Warehouse3 updateProduct1(@RequestBody Warehouse3 warehouse3) {
 		return repo.save(warehouse3);
 	}
 
-	// updates a product by ID
-	// goes through but doesn't actually update (or the update doesn't reflect in DB).
+	// updates a product by ID using parameters
 	@PutMapping("/id/{id}")
 	public ResponseEntity<Warehouse3> updateProduct(@PathVariable int id,
 			@RequestParam(name = "productName", required = false) String productName,
