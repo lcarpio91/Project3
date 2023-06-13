@@ -1,45 +1,45 @@
-.warehouse3{
-    background-color: rgb(206, 246, 246);
+.warehouse3 {
+  background-color: rgb(206, 246, 246);
 }
 
 .scroll-container {
-    width: 50%;
-    height: 790px;
-    overflow-x: auto;
-  }
+  display: inline-block;
+  max-height: 750px;
+  overflow: auto;
+}
 
 .container {
-    
+  margin: 20px;
 }
-  
+
 .text-center {
-    
+  text-align: center;
 }
-  
-.btn {
-  
-}
-  
+
 table {
-   
+  width: 100%;
+  border-collapse: collapse;
 }
-  
+
 thead {
-   
+  background-color: #f2f2f2;
 }
-  
+
 th {
-    
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
-  
+
 tbody {
-   
+  font-size: 14px;
 }
-  
-tr {
-  
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
-  
+
 td {
-    
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
