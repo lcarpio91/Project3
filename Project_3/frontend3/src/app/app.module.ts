@@ -13,6 +13,10 @@ import { Warehouse3Component } from './warehouse3/warehouse3.component';
 import { Warehouse4Component } from './warehouse4/warehouse4.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { Warehouse1detailsComponent } from './productDetails/warehouse1details/warehouse1details.component';
+import { Warehouse2detailsComponent } from './productDetails/warehouse2details/warehouse2details.component';
+import { Warehouse3detailsComponent } from './productDetails/warehouse3details/warehouse3details.component';
+import { Warehouse4detailsComponent } from './productDetails/warehouse4details/warehouse4details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { FooterComponent } from './footer/footer.component';
     Warehouse3Component,
     Warehouse4Component,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    Warehouse1detailsComponent,
+    Warehouse2detailsComponent,
+    Warehouse3detailsComponent,
+    Warehouse4detailsComponent
   ],
   imports: [
     BrowserModule,
