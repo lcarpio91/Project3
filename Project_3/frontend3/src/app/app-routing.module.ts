@@ -11,12 +11,12 @@ import { Warehouse4Component } from './warehouse4/warehouse4.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'inventory',component:InventoryComponent},
-  {path:'about',component:AboutComponent},
-  {path:'warehouse1',component:Warehouse1Component},
-  {path:'warehouse2', component:Warehouse2Component},
-  {path:'warehouse3', component:Warehouse3Component},
-  {path:'warehouse4', component:Warehouse4Component}
+  {path:'inventory',component: InventoryComponent},
+  {path:'about',component: AboutComponent},
+  {path:'warehouse1',component: Warehouse1Component},
+  {path:'warehouse2', component: Warehouse2Component},
+  {path:'warehouse3', component: Warehouse3Component},
+  {path:'warehouse4', component: Warehouse4Component}
 ];
 
 @NgModule({
