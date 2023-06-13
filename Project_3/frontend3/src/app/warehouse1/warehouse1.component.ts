@@ -35,8 +35,8 @@ export class Warehouse1Component {
   }
 
 
-  getProductDetails(warehouse1: Warehouse1): void {
-    this.router.navigate(['warehouse1/details/' + warehouse1.productId]);
+  getProductDetails(productId: number): void {
+    this.router.navigate(['warehouse1/details/' + productId]);
   }
 
 }
