@@ -13,16 +13,21 @@ import { Warehouse1 } from '../model/warehouse1';
 export class BackendService {
 
   ulr: string = environment.backendURL;
-  warehouse1: string = 'warehouse1';
-  warehouse2: string = 'warehouse2';
-  warehouse3: string = 'warehouse3';
-  warehouse4: string = 'warehouse4';
+  warehouse1: string = 'warehouse1/';
+  warehouse2: string = 'warehouse2/';
+  warehouse3: string = 'warehouse3/';
+  warehouse4: string = 'warehouse4/';
 
   constructor(private http: HttpClient) { }
 
   getAllProductsW1(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse1,
                               { observe: 'response' });
+  }
+
+  getProductByIdW1(productId: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+                              { observe: 'response'});
   }
 
   getAllProductsW2(): Observable<HttpResponse<any>> {
@@ -39,4 +44,6 @@ export class BackendService {
     return this.http.get<any>(this.ulr + this.warehouse4,
                               { observe: 'response' });
   }
+
+
 }
