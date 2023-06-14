@@ -65,5 +65,10 @@ export class BackendService {
                              { observe: 'response'});
   }
 
+  updateProductW1(warehouse1: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + 'warehouse1', warehouse1, { observe: 'response' });
+  }
+
+
 
 }
