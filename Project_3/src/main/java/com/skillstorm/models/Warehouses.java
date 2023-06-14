@@ -15,30 +15,18 @@ public class Warehouses {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Product_ID")
+	@Column(name = "Warehouse_ID")
 	private int productId;
 
-	@Column(name = "Product_name")
-	private String productName;
+	@Column(name = "Capacity")
+	private int capacity;
 
-	@Column(name = "Product_Price")
-	private double productPrice;
+	public Warehouses() {}
 
-	@Column(name = "Quantity")
-	private int quantity;
-
-	@Column(name = "UPC")
-	private String upc;
-
-	public Warehouse1() {}
-
-	public Warehouse1(int productId, String productName, double productPrice, int quantity, String upc) {
+	public Warehouses(int productId, int capacity) {
 		super();
 		this.productId = productId;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.quantity = quantity;
-		this.upc = upc;
+		this.capacity = capacity;
 	}
 
 	public int getProductId() {
@@ -49,36 +37,17 @@ public class Warehouses {
 		this.productId = productId;
 	}
 
-	public String getProductName() {
-		return this.productName;
+	public int getCapacity() {
+		return this.capacity;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 
-	public double getProductPrice() {
-		return this.productPrice;
-	}
-
-	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
-	}
-
-	public int getQuantity() {
-		return this.quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public String getUpc() {
-		return this.upc;
-	}
-
-	public void setUpc(String upc) {
-		this.upc = upc;
+	@Override
+	public int hashCode() {
+		return Objects.hash(capacity, productId);
 	}
 
 	@Override
@@ -89,17 +58,24 @@ public class Warehouses {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Warehouse1 other = (Warehouse1) obj;
-		return productId == other.productId && Objects.equals(productName, other.productName)
-				&& Double.doubleToLongBits(productPrice) == Double.doubleToLongBits(other.productPrice)
-				&& quantity == other.quantity && Objects.equals(upc, other.upc);
+		Warehouses other = (Warehouses) obj;
+		return capacity == other.capacity && productId == other.productId;
 	}
 
 	@Override
 	public String toString() {
-		return "Warehouse1 [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", quantity=" + quantity + ", upc=" + upc + "]";
+		return "Warehouses [productId=" + productId + ", capacity=" + capacity + "]";
 	}
+	
+	
+	
+	
+
+
+
+
+
+
 
 }
 

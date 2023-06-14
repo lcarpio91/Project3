@@ -33,18 +33,19 @@ public class Products{
 	private String upc;
 	
 	@OneToOne
-		@JoinColumn(name = "Warehouse_ID")
+	@JoinColumn(name = "Warehouse_ID")
 	private Warehouses warehouses;
 
-	public Warehouse1() {}
+	public Products() {}
 
-	public Warehouse1(int productId, String productName, double productPrice, int quantity, String upc) {
+	public Products(int productId, String productName, double productPrice, int quantity, String upc, Warehouses warehouses) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.quantity = quantity;
 		this.upc = upc;
+		this.warehouses = warehouses;
 	}
 
 	public int getProductId() {
@@ -87,6 +88,19 @@ public class Products{
 		this.upc = upc;
 	}
 
+	public Warehouses getWarehouses() {
+		return this.warehouses;
+	}
+
+	public void setWarehouses(Warehouses warehouses) {
+		this.warehouses = warehouses;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(productId, productName, productPrice, quantity, upc, warehouses);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -95,17 +109,27 @@ public class Products{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Warehouse1 other = (Warehouse1) obj;
+		Products other = (Products) obj;
 		return productId == other.productId && Objects.equals(productName, other.productName)
 				&& Double.doubleToLongBits(productPrice) == Double.doubleToLongBits(other.productPrice)
-				&& quantity == other.quantity && Objects.equals(upc, other.upc);
+				&& quantity == other.quantity && Objects.equals(upc, other.upc)
+				&& Objects.equals(warehouses, other.warehouses);
 	}
 
 	@Override
 	public String toString() {
-		return "Warehouse1 [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", quantity=" + quantity + ", upc=" + upc + "]";
+		return "Products [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", quantity=" + quantity + ", upc=" + upc + ", warehouses=" + warehouses + "]";
 	}
+	
+	
+	
+	
+	
+	
+
+
+
 
 }
 
