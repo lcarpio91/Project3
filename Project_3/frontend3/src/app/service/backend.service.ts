@@ -22,27 +22,47 @@ export class BackendService {
 
   getAllProductsW1(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse1,
-                              { observe: 'response' });
+                             { observe: 'response' });
   }
 
   getProductByIdW1(productId: Warehouse1): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+                             { observe: 'response'});
+  }
+
+  addProductByBodyW1(warehouse1: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.ulr + this.warehouse1, warehouse1,
                               { observe: 'response'});
   }
 
   getAllProductsW2(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse2,
-                              { observe: 'response' });
+                             { observe: 'response' });
+  }
+
+  getProductByIdW2(productId: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+                             { observe: 'response'});
   }
 
   getAllProductsW3(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse3,
-                              { observe: 'response' });
+                             { observe: 'response' });
+  }
+
+  getProductByIdW3(productId: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+                             { observe: 'response'});
   }
 
   getAllProductsW4(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse4,
-                              { observe: 'response' });
+                             { observe: 'response' });
+  }
+
+  getProductByIdW4(productId: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+                             { observe: 'response'});
   }
 
 

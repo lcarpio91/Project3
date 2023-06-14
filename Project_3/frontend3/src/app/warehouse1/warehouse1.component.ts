@@ -12,6 +12,11 @@ export class Warehouse1Component {
 
   localWarehouse1: any = [];
 
+  formName: string = '';
+  formPrice: string = '';
+  formQuantity: string = '';
+  formUpc: string = '';
+
   constructor(private backendService: BackendService,
               private router: Router) {
     this.getAllProductsW1();
@@ -37,6 +42,15 @@ export class Warehouse1Component {
 
   getProductDetails(productId: number): void {
     this.router.navigate(['warehouse1/details/' + productId]);
+  }
+
+  addNewProduct(): void {
+    this.backendService.addProductByBodyW1(new Warehouse1(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc))
+        .subscribe(() => this.getAllProductsW1());
+        this.formName = '';
+        this.formPrice = '';
+        this.formQuantity = '';
+        this.formUpc = '';
   }
 
 }

@@ -21,7 +21,7 @@
                         <table>
                             <tbody>
                                 <ng-container *ngFor="let warehouse2 of localWarehouse2">
-                                    <tr>
+                                    <tr (click)="getProductDetails(warehouse2.productId)">
                                         <td>{{ warehouse2.productId }}</td>
                                         <td>{{ warehouse2.productName}}</td>
                                         <td>{{ warehouse2.productPrice }}</td>
