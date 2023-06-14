@@ -4,6 +4,7 @@
             <div class="col">
                 <div class="scroll-container">
                     <div class="table-header">
+                        <h1 class="text-center">Warehouse 3</h1>
                         <table>
                             <thead>
                                 <tr>
@@ -12,6 +13,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>UPC</th>
+                                    <button (click)="showAddForm = true">add</button>
                                 </tr>
                             </thead>
                         </table>
@@ -21,12 +23,13 @@
                         <table>
                             <tbody>
                                 <ng-container *ngFor="let warehouse3 of localWarehouse3">
-                                    <tr (click)="getProductDetails(warehouse3.productId)">
-                                        <td>{{ warehouse3.productId }}</td>
+                                    <tr>
+                                        <td class="my-button" (click)="getProductDetails(warehouse3.productId)">{{ warehouse3.productId }}</td>
                                         <td>{{ warehouse3.productName}}</td>
                                         <td>{{ warehouse3.productPrice }}</td>
                                         <td>{{ warehouse3.quantity }}</td>
                                         <td>{{ warehouse3.upc }}</td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse3)">update</button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -35,17 +38,37 @@
                 </div>
             </div>
             <div class="col">
-               <h1 class="text-center">Warehouse 3</h1>
-                <form> 
+               
+                <form *ngIf="showAddForm"> 
                     <h4>Add new product</h4>
                     <label for="name">Product name: </label>
-                    <input type="text" id="name" name="">
+                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
                     <label for="price">Product price: </label>
-                    <input type="number" id="price" name="">
+                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
                     <label for="quantity">Quantity: </label>
-                    <input type="number" id="quantity" name="">
+                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
                     <label for="upc">UPC: </label>
-                    <input type="text" id="upc" name="">
+                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+                    <button (click)="addNewProduct()">Add new product</button>
+                    <button (click)="resetForm()">Cancel</button>
+                </form>
+                <br>
+                <form *ngIf="showUpdateForm">
+                    <h4>Update Product</h4>
+                    <label for="productId">ID: </label>
+                    <input type="number" id="productId" name="formId" [(ngModel)]="formId">
+                    <label for="name">Product name: </label>
+                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
+                    <label for="price">Product price: </label>
+                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
+                    <label for="quantity">Quantity: </label>
+                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
+                    <label for="upc">UPC: </label>
+                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+                    <button (click)="updateProduct()">Update</button>
+                    <button (click)="resetForm()">Cancel</button>
                 </form>
             </div>
         </div>

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Warehouse1 } from '../model/warehouse1';
+import { Warehouse2 } from '../model/warehouse2';
+import { Warehouse3 } from '../model/warehouse3';
+import { Warehouse4 } from '../model/warehouse4';
 
 
 
@@ -20,6 +23,11 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
+  /*
+   * Warehouse 1 methods
+   * 
+   */
+
   getAllProductsW1(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse1,
                              { observe: 'response' });
@@ -30,10 +38,19 @@ export class BackendService {
                              { observe: 'response'});
   }
 
+  updateProductW1(warehouse1: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + this.warehouse1, warehouse1, { observe: 'response' });
+  }
+
   addProductByBodyW1(warehouse1: Warehouse1): Observable<HttpResponse<any>> {
     return this.http.post<any>(this.ulr + this.warehouse1, warehouse1,
                               { observe: 'response'});
   }
+
+  /*
+   * Warehouse 2 methods
+   * 
+   */
 
   getAllProductsW2(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse2,
@@ -41,9 +58,23 @@ export class BackendService {
   }
 
   getProductByIdW2(productId: Warehouse1): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+    return this.http.get<any>(this.ulr + this.warehouse2 + productId,
                              { observe: 'response'});
   }
+
+  updateProductW2(warehouse2: Warehouse2): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + this.warehouse2, warehouse2, { observe: 'response' });
+  }
+
+  addProductByBodyW2(warehouse2: Warehouse2): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.ulr + this.warehouse2, warehouse2,
+                              { observe: 'response'});
+  }
+
+  /*
+   * Warehouse 3 methods
+   * 
+   */
 
   getAllProductsW3(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse3,
@@ -51,9 +82,23 @@ export class BackendService {
   }
 
   getProductByIdW3(productId: Warehouse1): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+    return this.http.get<any>(this.ulr + this.warehouse3 + productId,
                              { observe: 'response'});
   }
+
+  updateProductW3(warehouse3: Warehouse3): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + this.warehouse3, warehouse3, { observe: 'response' });
+  }
+
+  addProductByBodyW3(warehouse3: Warehouse3): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.ulr + this.warehouse3, warehouse3,
+                              { observe: 'response'});
+  }
+
+  /*
+   * Warehouse 4 methods
+   * 
+   */
 
   getAllProductsW4(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse4,
@@ -61,12 +106,17 @@ export class BackendService {
   }
 
   getProductByIdW4(productId: Warehouse1): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + this.warehouse1 + productId,
+    return this.http.get<any>(this.ulr + this.warehouse4 + productId,
                              { observe: 'response'});
   }
 
-  updateProductW1(warehouse1: Warehouse1): Observable<HttpResponse<any>> {
-    return this.http.put<any>(this.ulr + this.warehouse1, warehouse1, { observe: 'response' });
+  updateProductW4(warehouse4: Warehouse4): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + this.warehouse4, warehouse4, { observe: 'response' });
+  }
+
+  addProductByBodyW4(warehouse4: Warehouse4): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.ulr + this.warehouse4, warehouse4,
+                              { observe: 'response'});
   }
 
 

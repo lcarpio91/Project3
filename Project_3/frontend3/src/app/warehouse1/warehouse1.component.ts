@@ -12,7 +12,7 @@ export class Warehouse1Component {
 
   localWarehouse1: any = [];
   showUpdateForm: boolean = false;
-  showAddForm: boolean = true;
+  showAddForm: boolean = false;
   selectedProduct: Warehouse1 | null = null;
 
   choseProductId: number = 0;
@@ -43,7 +43,6 @@ export class Warehouse1Component {
       }
     });
   }
-
 
   getProductDetails(productId: number): void {
     this.router.navigate(['warehouse1/details/' + productId]);
@@ -76,17 +75,13 @@ export class Warehouse1Component {
   }
 
   resetForm(): void {
-    this.showAddForm = true; 
+    this.showAddForm = false; 
     this.showUpdateForm = false;
     this.formId = '';
     this.formName = '';
     this.formPrice = '';
     this.formQuantity = '';
     this.formUpc = '';
-  }
-
-  cancelForm(): void {
-    this.resetForm();
   }
 
 
