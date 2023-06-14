@@ -132,12 +132,9 @@ public class Warehouse1Controller {
 
 	// deletes a product by ID
 	@DeleteMapping("/id/{id}")
-	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+	public void deleteProductbyId(@PathVariable int id) {
 		if (repo.existsById(id)) {
 			repo.deleteById(id);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
 		}
 	}
 
