@@ -39,13 +39,15 @@
                 <form> 
                     <h4>Add new product</h4>
                     <label for="name">Product name: </label>
-                    <input type="text" id="name" name="">
+                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
                     <label for="price">Product price: </label>
-                    <input type="number" id="price" name="">
+                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
                     <label for="quantity">Quantity: </label>
-                    <input type="number" id="quantity" name="">
+                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
                     <label for="upc">UPC: </label>
-                    <input type="text" id="upc" name="">
+                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+                    <button (click)="addNewProduct()">Add new product</button>
                 </form>
             </div>
         </div>

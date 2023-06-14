@@ -60,13 +60,21 @@ public class Warehouse1Controller {
 	// adds a product by body
 	@PostMapping
 	public ResponseEntity<Warehouse1> addProduct(@RequestBody Warehouse1 warehouse1) {
-		if (repo.existsById(warehouse1.getProductId())) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(warehouse1);
+		// warehouse1.getProductId()
+		if(warehouse1.getProductId() < 2500 && !repo.existsById(warehouse1.getProductId())) {
+			return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(warehouse1));
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(repo.save(warehouse1));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(warehouse1);
 		}
+		
+		
+//		if (repo.existsById(warehouse1.getProductId())) {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//					.body(warehouse1);
+//		} else {
+//			return ResponseEntity.status(HttpStatus.CREATED)
+//					.body(repo.save(warehouse1));
+//		}
 	}
 
 	// updates a product by body
