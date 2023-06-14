@@ -47,6 +47,11 @@ export class BackendService {
                               { observe: 'response'});
   }
 
+  deleteProductByIdW1(productId: Warehouse1): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(this.ulr + this.warehouse1 + 'id/' + productId,
+                                { observe: 'response'});
+  }
+
   /*
    * Warehouse 2 methods
    * 

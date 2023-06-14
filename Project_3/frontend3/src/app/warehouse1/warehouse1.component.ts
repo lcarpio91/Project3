@@ -74,6 +74,14 @@ export class Warehouse1Component {
     this.formUpc = this.selectedProduct.upc;
   }
 
+  resetFormAdd(): void {
+    this.formId = '';
+    this.formName = '';
+    this.formPrice = '';
+    this.formQuantity = '';
+    this.formUpc = '';
+  }
+
   resetForm(): void {
     this.showAddForm = false; 
     this.showUpdateForm = false;
