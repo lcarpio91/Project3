@@ -79,13 +79,13 @@ public class Warehouse1Controller {
 
 	// updates a product by body
 	@PutMapping
-	public Warehouse1 updateProduct1(@RequestBody Warehouse1 warehouse1) {
+	public Warehouse1 updateProduct(@RequestBody Warehouse1 warehouse1) {
 		return repo.save(warehouse1);
 	}
 
 	// updates a product by ID using parameters
 	@PutMapping("/id/{id}")
-	public ResponseEntity<Warehouse1> updateProduct(@PathVariable int id,
+	public ResponseEntity<Warehouse1> updateProduct1(@PathVariable int id,
 			@RequestParam(name = "productName", required = false) String productName,
 			@RequestParam(name = "productPrice", required = false) String productPrice,
 			@RequestParam(name = "quantity", required = false) String quantity,

@@ -27,6 +27,7 @@
                                         <td>{{ warehouse1.productPrice }}</td>
                                         <td>{{ warehouse1.quantity }}</td>
                                         <td>{{ warehouse1.upc }}</td>
+                                        <td>5</td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -53,16 +54,16 @@
                 <form>
                     <h4>Update Product</h4>
                     <label for="productId">ID: </label>
-                    <input type="number" id="productId" name="">
+                    <input type="number" id="productId" name="formId" [(ngModel)]="formId">
                     <label for="name">Product name: </label>
-                    <input type="text" id="name" name="">
+                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
                     <label for="price">Product price: </label>
-                    <input type="number" id="price" name="">
+                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
                     <label for="quantity">Quantity: </label>
-                    <input type="number" id="quantity" name="">
+                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
                     <label for="upc">UPC: </label>
-                    <input type="text" id="upc" name="">
-                    <button (click)="updateProductW1()">Update</button>
+                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+                    <button (click)="updateProduct()">Update</button>
                 </form>
             </div>
         </div>
