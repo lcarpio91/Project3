@@ -28,7 +28,7 @@
                                         <td>{{ warehouse1.productPrice }}</td>
                                         <td>{{ warehouse1.quantity }}</td>
                                         <td>{{ warehouse1.upc }}</td>
-                                        <td><button (click)="showUpdateForm = true">+</button></td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse1)">+</button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -38,7 +38,7 @@
             </div>
             <div class="col">
                <h1 class="text-center">Warehouse 1</h1>
-                <form> 
+                <form *ngIf="showAddForm"> 
                     <h4>Add new product</h4>
                     <label for="name">Product name: </label>
                     <input type="text" id="name" name="formName" [(ngModel)]="formName">
@@ -65,6 +65,7 @@
                     <label for="upc">UPC: </label>
                     <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
                     <button (click)="updateProduct()">Update</button>
+                    <button (click)="cancelForm()">Cancel</button>
                 </form>
             </div>
         </div>
