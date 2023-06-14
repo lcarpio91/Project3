@@ -44,3 +44,7 @@ td {
   border-bottom: 1px solid #ddd;
 }
 
+.my-button {
+  cursor: pointer;
+}
+
