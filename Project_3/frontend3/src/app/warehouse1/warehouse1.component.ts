@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class Warehouse1Component {
 
   localWarehouse1: any = [];
+  showUpdateForm: boolean = false;
 
   choseProductId: number = 0;
   formId: string = '';
