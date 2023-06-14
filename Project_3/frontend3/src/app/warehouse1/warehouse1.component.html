@@ -21,13 +21,13 @@
                         <table>
                             <tbody>
                                 <ng-container *ngFor="let warehouse1 of localWarehouse1">
-                                    <tr (click)="getProductDetails(warehouse1.productId)">
-                                        <td>{{ warehouse1.productId }}</td>
+                                    <tr>
+                                        <td (click)="getProductDetails(warehouse1.productId)">{{ warehouse1.productId }}</td>
                                         <td>{{ warehouse1.productName}}</td>
                                         <td>{{ warehouse1.productPrice }}</td>
                                         <td>{{ warehouse1.quantity }}</td>
                                         <td>{{ warehouse1.upc }}</td>
-                                        <td>5</td>
+                                        <td><button (click)="showUpdateForm = true">+</button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -51,7 +51,7 @@
                     <button (click)="addNewProduct()">Add new product</button>
                 </form>
                 <br>
-                <form>
+                <form *ngIf="showUpdateForm">
                     <h4>Update Product</h4>
                     <label for="productId">ID: </label>
                     <input type="number" id="productId" name="formId" [(ngModel)]="formId">
