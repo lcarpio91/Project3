@@ -3,7 +3,7 @@
 }
 
 .scroll-container {
-  display: inline-block;
+  display: block;
   max-height: 750px;
   overflow: auto;
 }

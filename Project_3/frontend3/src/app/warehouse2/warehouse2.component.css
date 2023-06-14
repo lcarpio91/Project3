@@ -16,6 +16,15 @@
   text-align: center;
 }
 
+.my-button {
+  cursor: pointer;
+  transition: background-color 3ms;
+}
+
+.my-button:hover {
+  background-color: aqua;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

@@ -3,7 +3,7 @@
 }
 
 .scroll-container {
-  display: inline-block;
+  display: block;
   max-height: 750px;
   overflow: auto;
 }
@@ -14,6 +14,15 @@
 
 .text-center {
   text-align: center;
+}
+
+.my-button {
+  cursor: pointer;
+  transition: background-color 3ms;
+}
+
+.my-button:hover {
+  background-color: aqua;
 }
 
 table {
@@ -43,3 +52,4 @@ td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
+

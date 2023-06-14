@@ -4,6 +4,7 @@
             <div class="col">
                 <div class="scroll-container">
                     <div class="table-header">
+                        <h1 class="text-center">Warehouse 1</h1>
                         <table>
                             <thead>
                                 <tr>
@@ -12,7 +13,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>UPC</th>
-                                    <button>+</button>
+                                    <button (click)="showAddForm = true">add</button>
                                 </tr>
                             </thead>
                         </table>
@@ -28,7 +29,7 @@
                                         <td>{{ warehouse1.productPrice }}</td>
                                         <td>{{ warehouse1.quantity }}</td>
                                         <td>{{ warehouse1.upc }}</td>
-                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse1)">+</button></td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse1)">update</button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -37,7 +38,7 @@
                 </div>
             </div>
             <div class="col">
-               <h1 class="text-center">Warehouse 1</h1>
+             
                 <form *ngIf="showAddForm"> 
                     <h4>Add new product</h4>
                     <label for="name">Product name: </label>
@@ -50,6 +51,7 @@
                     <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
 
                     <button (click)="addNewProduct()">Add new product</button>
+                    <button (click)="resetForm()">Cancel</button>
                 </form>
                 <br>
                 <form *ngIf="showUpdateForm">
@@ -64,8 +66,9 @@
                     <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
                     <label for="upc">UPC: </label>
                     <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
                     <button (click)="updateProduct()">Update</button>
-                    <button (click)="cancelForm()">Cancel</button>
+                    <button (click)="resetForm()">Cancel</button>
                 </form>
             </div>
         </div>
