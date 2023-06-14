@@ -12,6 +12,8 @@ export class Warehouse1Component {
 
   localWarehouse1: any = [];
   showUpdateForm: boolean = false;
+  showAddForm: boolean = true;
+  selectedProduct: Warehouse1 | null = null;
 
   choseProductId: number = 0;
   formId: string = '';
@@ -50,10 +52,7 @@ export class Warehouse1Component {
   addNewProduct(): void {
     this.backendService.addProductByBodyW1(new Warehouse1(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc))
         .subscribe(() => this.getAllProductsW1());
-        this.formName = '';
-        this.formPrice = '';
-        this.formQuantity = '';
-        this.formUpc = '';
+       this.resetForm();
   }
 
   updateProduct(): void {
@@ -62,11 +61,32 @@ export class Warehouse1Component {
                                                         Number(this.formPrice),
                                                         Number(this.formQuantity),
                                                         this.formUpc)).subscribe(() => this.getAllProductsW1());
+    this.resetForm();
+  }
+
+  chosenProduct(warehouse1: Warehouse1): void {
+    this.showAddForm = false;
+    this.showUpdateForm = true;
+    this.selectedProduct = { ...warehouse1 };
+    this.formId = String(this.selectedProduct.productId);
+    this.formName = this.selectedProduct.productName;
+    this.formPrice = String(this.selectedProduct.productPrice);
+    this.formQuantity = String(this.selectedProduct.quantity);
+    this.formUpc = this.selectedProduct.upc;
+  }
+
+  resetForm(): void {
+    this.showAddForm = true; 
+    this.showUpdateForm = false;
     this.formId = '';
     this.formName = '';
     this.formPrice = '';
     this.formQuantity = '';
     this.formUpc = '';
+  }
+
+  cancelForm(): void {
+    this.resetForm();
   }
 
 
