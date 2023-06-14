@@ -12,7 +12,8 @@ export class Warehouse1Component {
 
   localWarehouse1: any = [];
 
-  formId: number = 0;
+  choseProductId: number = 0;
+  formId: string = '';
   formName: string = '';
   formPrice: string = '';
   formQuantity: string = '';
@@ -54,13 +55,17 @@ export class Warehouse1Component {
         this.formUpc = '';
   }
 
-  updateProductW1(): void {
-    this.backendService.updateProductW1(new Warehouse1( this.formId,
+  updateProduct(): void {
+    this.backendService.updateProductW1(new Warehouse1( Number(this.formId),
                                                         this.formName,
                                                         Number(this.formPrice),
                                                         Number(this.formQuantity),
-                                                        this.formUpc))
-                                                      .subscribe(() => this.getAllProductsW1());
+                                                        this.formUpc)).subscribe(() => this.getAllProductsW1());
+    this.formId = '';
+    this.formName = '';
+    this.formPrice = '';
+    this.formQuantity = '';
+    this.formUpc = '';
   }
 
 
