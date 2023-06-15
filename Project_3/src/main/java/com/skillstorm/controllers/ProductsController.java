@@ -34,9 +34,9 @@ public class ProductsController {
 		return repo.findAll();
 	}
 	
-	@GetMapping("/w1/{w1}")
-	public ArrayList<Products> getWarehouse1(@PathVariable int w1) {
-		ArrayList<Products> outcomes = (ArrayList<Products>) repo.findByW1ID(w1);
+	@GetMapping("/w/{w}")
+	public ArrayList<Products> getWarehouse1(@PathVariable int w) {
+		ArrayList<Products> outcomes = (ArrayList<Products>) repo.findByW1ID(w);
 		if(!outcomes.isEmpty()) {
 			return outcomes;
 		} else {
