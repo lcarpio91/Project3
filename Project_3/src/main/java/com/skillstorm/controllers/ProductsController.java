@@ -70,12 +70,12 @@ public class ProductsController {
 	// adds a product by body
 	@PostMapping
 	public ResponseEntity<Products> addProduct(@RequestBody Products products) {
-		// warehouse1.getProductId()
-		if(products.getProductId() < 2500 && !repo.existsById(products.getProductId())) {
+		if(repo.countProducts(products.getWarehouses().getWarehouseId()) < 2500 && !repo.existsById(products.getProductId())) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(products));
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
 		}
+
 	}
 
 	// updates a product by body
