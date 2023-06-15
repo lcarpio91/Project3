@@ -22,7 +22,7 @@ public interface ProductsRepository extends CrudRepository<Products, Integer>{
 	@Query (value = "SELECT * FROM products WHERE Warehouse_ID = %?1%", nativeQuery = true)
 	public Iterable<Products> findByWID(String searchString);
 	
-	@Query (value = "SELECT count(Product_ID) FROM products WHERE Warehouse_ID = %?1%", nativeQuery = true)
-	public Iterable<Products> countProducts(String searchString);
+	@Query (value = "SELECT count(*) FROM products WHERE Warehouse_ID = ?1", nativeQuery = true)
+	public int countProducts(int warehouseID);
 	
 }
