@@ -7,6 +7,7 @@ import { Warehouse1 } from '../model/warehouse1';
 import { Warehouse2 } from '../model/warehouse2';
 import { Warehouse3 } from '../model/warehouse3';
 import { Warehouse4 } from '../model/warehouse4';
+import { Products } from '../model/products';
 
 
 
@@ -27,6 +28,16 @@ export class BackendService {
    * Warehouse 1 methods
    * 
    */
+
+  getWarehouse1(warehousesId: Number): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + 'w1/' + warehousesId,
+                             { observe: 'response'})
+  }
+
+
+
+
+
 
   getAllProductsW1(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse1,

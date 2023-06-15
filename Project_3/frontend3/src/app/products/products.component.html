@@ -1,0 +1,30 @@
+<div class="scroll-container">
+    <div class="table-header">
+        <h1 class="text-center">Warehouse 1</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>UPC</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+        <table>
+            <tbody>
+                <ng-container *ngFor="let warehouse1 of localWarehouse1">
+                    <tr>
+                        <td>{{ warehouse1.productId }}</td>
+                        <td>{{ warehouse1.productName}}</td>
+                        <td>{{ warehouse1.productPrice }}</td>
+                        <td>{{ warehouse1.quantity }}</td>
+                        <td>{{ warehouse1.upc }}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    

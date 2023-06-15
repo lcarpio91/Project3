@@ -11,6 +11,7 @@ import { Warehouse1detailsComponent } from './productDetails/warehouse1details/w
 import { Warehouse2detailsComponent } from './productDetails/warehouse2details/warehouse2details.component';
 import { Warehouse3detailsComponent } from './productDetails/warehouse3details/warehouse3details.component';
 import { Warehouse4detailsComponent } from './productDetails/warehouse4details/warehouse4details.component';
+import { ProductsComponent } from './products/products.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:'warehouse1/details/:id', component: Warehouse1detailsComponent},
   {path:'warehouse2/details/:id', component: Warehouse2detailsComponent},
   {path:'warehouse3/details/:id', component: Warehouse3detailsComponent},
-  {path:'warehouse4/details/:id', component: Warehouse4detailsComponent}
+  {path:'warehouse4/details/:id', component: Warehouse4detailsComponent},
+  {path:'products', component: ProductsComponent }
 ];
 
 @NgModule({
