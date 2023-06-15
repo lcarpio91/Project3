@@ -17,6 +17,7 @@ import { Products } from '../model/products';
 export class BackendService {
 
   ulr: string = environment.backendURL;
+  products: string = 'products/';
   warehouse1: string = 'warehouse1/';
   warehouse2: string = 'warehouse2/';
   warehouse3: string = 'warehouse3/';
@@ -25,20 +26,42 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   /*
-   * Warehouse 1 methods
+   * Warehouse 1(Products) methods
    * 
    */
 
   getWarehouse1(warehousesId: Number): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + 'w1/' + warehousesId,
+    return this.http.get<any>(this.ulr + this.products + 'w1/' + warehousesId,
                              { observe: 'response'})
+  }
+
+  getProductByIdW1P(productId: Products): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.products + productId,
+                             { observe: 'response'});
+  }
+
+  updateProductW1P(warehouse1: Products): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + this.products, warehouse1, { observe: 'response' });
+  }
+
+  addProductByBodyW1P(warehouse1: Products): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.ulr + this.products, warehouse1,
+                              { observe: 'response'});
+  }
+
+  deleteProductByIdW1P(productId: Products): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(this.ulr + this.products + 'id/' + productId,
+                                { observe: 'response'});
   }
 
 
 
 
 
-
+  /*
+   * Warehouse 1 methods
+   * 
+   */
   getAllProductsW1(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.ulr + this.warehouse1,
                              { observe: 'response' });
