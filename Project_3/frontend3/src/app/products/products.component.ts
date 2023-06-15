@@ -73,7 +73,7 @@ updateProduct(): void {
                                                       this.formUpc,
                                       new Warehouses(1, 2500))).subscribe(() => this.getAllProductsW1());
   
-  this.resetForm();
+    this.resetForm();
 }
 
 deleteProduct(): void {
