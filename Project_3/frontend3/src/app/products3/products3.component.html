@@ -1,1 +1,79 @@
-<p>products3 works!</p>
+<section class="warehouse3">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="scroll-container">
+                        <h1 class="text-center">Warehouse 3</h1>
+                        <div class="table-header">
+                        <table class="table-sticky">
+                            <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>UPC</th>
+                                    <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd();">add</button>
+                                </tr>
+                            </thead>
+                        </table>
+                        
+                    </div>
+                    
+                    <div class="table-body">
+                        <table>
+                            <tbody>
+                                <ng-container *ngFor="let warehouse1 of localWarehouse1">
+                                    <tr>
+                                        <td class="my-button" (click)="getProductDetails(warehouse1.productId)">{{ warehouse3.productId }}</td>
+                                        <td>{{ warehouse3.productName}}</td>
+                                        <td>{{ warehouse3.productPrice }}</td>
+                                        <td>{{ warehouse3.quantity }}</td>
+                                        <td>{{ warehouse3.upc }}</td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse1)">update</button></td>
+                                        <td><button (click)="chosenToDelete(warehouse1)">delete</button></td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+             
+                <form *ngIf="showAddForm"> 
+                    <h4>Add new product</h4>
+                    <label for="name">Product name: </label>
+                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
+                    <label for="price">Product price: </label>
+                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
+                    <label for="quantity">Quantity: </label>
+                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
+                    <label for="upc">UPC: </label>
+                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+                    <button (click)="addNewProduct()">Add new product</button>
+                    <button (click)="resetForm()">Cancel</button>
+                </form>
+                <br>
+                <form *ngIf="showUpdateForm">
+                    <h4>Update Product</h4>
+                    <label for="productId">ID: </label>
+                    <span id="productId">{{ formId }}</span>
+                    <label for="name">Product name: </label>
+                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
+                    <label for="price">Product price: </label>
+                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
+                    <label for="quantity">Quantity: </label>
+                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
+                    <label for="upc">UPC: </label>
+                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+                    <button (click)="updateProduct()">Update</button>
+                    <button (click)="resetForm()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</section>
