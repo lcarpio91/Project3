@@ -121,13 +121,13 @@ public class ProductsController {
 	
 	// deletes the product by body
 	@DeleteMapping
-	public ResponseEntity<Products> deleteProductByBody(@RequestBody Products products) {
+	public ResponseEntity<String> deleteProductByBody(@RequestBody Products products) {
 		if (repo.findById(products.getProductId()).isPresent()
 				&& products.equals(repo.findById(products.getProductId()).get())) {
 			repo.delete(products);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(products);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product " + products.getProductId() + " succesfully deleted.");
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to delete product - product may not exist.");
 		}
 	}
 
