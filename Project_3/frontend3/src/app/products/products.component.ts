@@ -52,24 +52,26 @@ getAllProductsW1(): void {
 }
 
 getProductDetails(productId: number): void {
-  this.router.navigate(['warehouse1/details/' + productId]);
+  this.router.navigate(['products1/details/' + productId]);
 }
 
 addNewProduct(): void {
 
   this.backendService.addProductByBodyW1P(new Products(0, this.formName, Number(this.formPrice), Number(this.formQuantity), this.formUpc,
-                                        new Warehouses(Number(this.formWarehouseId), Number(this.formCapacity))))
+                                        new Warehouses(1, 2500)))
       .subscribe(() => this.getAllProductsW1());
+
      this.resetForm();
 }
 
 updateProduct(): void {
-  this.backendService.updateProductW1(new Products( Number(this.formId),
+  this.backendService.updateProductW1P(new Products( Number(this.formId),
                                                       this.formName,
                                                       Number(this.formPrice),
                                                       Number(this.formQuantity),
                                                       this.formUpc,
-                                      new Warehouses(Number(this.formWarehouseId), Number(this.formCapacity)))).subscribe(() => this.getAllProductsW1());
+                                      new Warehouses(1, 2500))).subscribe(() => this.getAllProductsW1());
+  
   this.resetForm();
 }
 
