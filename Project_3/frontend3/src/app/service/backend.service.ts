@@ -54,10 +54,97 @@ export class BackendService {
                                 { observe: 'response'});
   }
 
+    /*
+   * Warehouse 2(Products) methods
+   * 
+   */
+
+    getWarehouse2(warehousesId: Number): Observable<HttpResponse<any>> {
+      return this.http.get<any>(this.ulr + this.products + 'w2/' + warehousesId,
+                               { observe: 'response'})
+    }
+  
+    getProductByIdW2P(productId: Products): Observable<HttpResponse<any>> {
+      return this.http.get<any>(this.ulr + this.products + productId,
+                               { observe: 'response'});
+    }
+  
+    updateProductW2P(warehouse2: Products): Observable<HttpResponse<any>> {
+      return this.http.put<any>(this.ulr + this.products, warehouse2, { observe: 'response' });
+    }
+  
+    addProductByBodyW2P(warehouse2: Products): Observable<HttpResponse<any>> {
+      return this.http.post<any>(this.ulr + this.products, warehouse2,
+                                { observe: 'response'});
+    }
+  
+    deleteProductByIdW2P(productId: Products): Observable<HttpResponse<any>> {
+      return this.http.delete<any>(this.ulr + this.products + 'id/' + productId,
+                                  { observe: 'response'});
+    }
+
+      /*
+   * Warehouse 3(Products) methods
+   * 
+   */
+
+  getWarehouse3(warehousesId: Number): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.products + 'w3/' + warehousesId,
+                             { observe: 'response'})
+  }
+
+  getProductByIdW3P(productId: Products): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.ulr + this.products + productId,
+                             { observe: 'response'});
+  }
+
+  updateProductW3P(warehouse3: Products): Observable<HttpResponse<any>> {
+    return this.http.put<any>(this.ulr + this.products, warehouse3, { observe: 'response' });
+  }
+
+  addProductByBodyW3P(warehouse3: Products): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.ulr + this.products, warehouse3,
+                              { observe: 'response'});
+  }
+
+  deleteProductByIdW3P(productId: Products): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(this.ulr + this.products + 'id/' + productId,
+                                { observe: 'response'});
+  }
+
+    /*
+   * Warehouse 4(Products) methods
+   * 
+   */
+
+    getWarehouse4(warehousesId: Number): Observable<HttpResponse<any>> {
+      return this.http.get<any>(this.ulr + this.products + 'w4/' + warehousesId,
+                               { observe: 'response'})
+    }
+  
+    getProductByIdW4P(productId: Products): Observable<HttpResponse<any>> {
+      return this.http.get<any>(this.ulr + this.products + productId,
+                               { observe: 'response'});
+    }
+  
+    updateProductW4P(warehouse4: Products): Observable<HttpResponse<any>> {
+      return this.http.put<any>(this.ulr + this.products, warehouse4, { observe: 'response' });
+    }
+  
+    addProductByBodyW4P(warehouse4: Products): Observable<HttpResponse<any>> {
+      return this.http.post<any>(this.ulr + this.products, warehouse4,
+                                { observe: 'response'});
+    }
+  
+    deleteProductByIdW4P(productId: Products): Observable<HttpResponse<any>> {
+      return this.http.delete<any>(this.ulr + this.products + 'id/' + productId,
+                                  { observe: 'response'});
+    }
+
   
 
 
-
+//////////////////////////////////////////////////OLD WAREHOUSE METHODS BELOW THIS LINE///////////////////////////////////////////////////////
 
   /*
    * Warehouse 1 methods
