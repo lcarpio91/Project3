@@ -37,7 +37,6 @@ getAllProductsW1(): void {
 
   this.backendService.getWarehouse1(warehouseId).subscribe((data) => {
 
-    console.log(data.body);
     for(let warehouse1 of data.body) {
       this.localWarehouse1.push(new Products(warehouse1.productId,
                                                warehouse1.productName,
@@ -46,7 +45,7 @@ getAllProductsW1(): void {
                                                warehouse1.upc,
                                                new Warehouses(warehouse1.warehouses.warehousesId,
                                                             warehouse1.warehouses.capacity)));
-    console.log(this.localWarehouse1);
+   
 
     }
   });
@@ -57,10 +56,11 @@ getProductDetails(productId: number): void {
 }
 
 addNewProduct(): void {
-  this.backendService.addProductByBodyW1(new Products(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc,
+
+  this.backendService.addProductByBodyW1P(new Products(0, this.formName, Number(this.formPrice), Number(this.formQuantity), this.formUpc,
                                         new Warehouses(Number(this.formWarehouseId), Number(this.formCapacity))))
       .subscribe(() => this.getAllProductsW1());
-//     this.resetForm();
+     this.resetForm();
 }
 
 updateProduct(): void {
@@ -70,7 +70,7 @@ updateProduct(): void {
                                                       Number(this.formQuantity),
                                                       this.formUpc,
                                       new Warehouses(Number(this.formWarehouseId), Number(this.formCapacity)))).subscribe(() => this.getAllProductsW1());
-//  this.resetForm();
+  this.resetForm();
 }
 
 chosenProduct(warehouse1: Products): void {
@@ -82,7 +82,7 @@ chosenProduct(warehouse1: Products): void {
   this.formPrice = String(this.selectedProduct.productPrice);
   this.formQuantity = String(this.selectedProduct.quantity);
   this.formUpc = this.selectedProduct.upc;
-  this.formWarehouseId = String(this.selectedWarehouse?.warehousesId);
+  this.formWarehouseId = String(this.selectedWarehouse?.warehouseId);
   this.formCapacity = String(this.selectedWarehouse?.capacity);
 }
 

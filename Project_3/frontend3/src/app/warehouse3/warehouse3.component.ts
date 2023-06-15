@@ -31,14 +31,14 @@ export class Warehouse3Component {
     this.localWarehouse3 = [];
     this.backendService.getAllProductsW3().subscribe((data) => {
 
-      console.log(data.body);
+      
       for(let warehouse1 of data.body) {
         this.localWarehouse3.push(new Warehouse3(warehouse1.productId,
                                                  warehouse1.productName,
                                                  warehouse1.productPrice,
                                                  warehouse1.quantity,
                                                  warehouse1.upc));
-      console.log(this.localWarehouse3);
+   
 
       }
     });
