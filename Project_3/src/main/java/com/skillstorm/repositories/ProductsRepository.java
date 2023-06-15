@@ -19,6 +19,9 @@ public interface ProductsRepository extends CrudRepository<Products, Integer>{
 	@Query (value = "SELECT * FROM products WHERE UPC LIKE %?1%", nativeQuery = true)
 	public Iterable<Products> findByUPC(String searchString);
 	
+	@Query (value = "SELECT * FROM products WHERE Warehouse_ID = %?1%", nativeQuery = true)
+	public Iterable<Products> findByWID(String searchString);
+	
 	@Query (value = "SELECT count(Product_ID) FROM products WHERE Warehouse_ID = %?1%", nativeQuery = true)
 	public Iterable<Products> countProducts(String searchString);
 	

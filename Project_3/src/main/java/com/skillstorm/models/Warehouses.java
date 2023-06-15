@@ -32,9 +32,10 @@ public class Warehouses {
 	public int getWarehouseId() {
 		return this.warehouseId;
 	}
+  
+	public void setWarehouseId(int warehouseId) {
+		this.warehouseId = warehouseId;
 
-	public void setWarehouseId(int productId) {
-		this.warehouseId = productId;
 	}
 
 	public int getCapacity() {
@@ -64,7 +65,7 @@ public class Warehouses {
 
 	@Override
 	public String toString() {
-		return "Warehouses [warehouseId=" + warehouseId + ", capacity=" + capacity + "]";
+		return "Warehouses [WarehouseId=" + warehouseId + ", capacity=" + capacity + "]";
 	}
 	
 
