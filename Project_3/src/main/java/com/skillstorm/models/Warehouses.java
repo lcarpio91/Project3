@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Warehouses")
+@Table(name = "warehouses")
 public class Warehouses {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Warehouse_ID")
-	private int productId;
+	private int warehouseId;
 
 	@Column(name = "Capacity")
 	private int capacity;
@@ -25,16 +25,16 @@ public class Warehouses {
 
 	public Warehouses(int productId, int capacity) {
 		super();
-		this.productId = productId;
+		this.warehouseId = productId;
 		this.capacity = capacity;
 	}
 
 	public int getProductId() {
-		return this.productId;
+		return this.warehouseId;
 	}
 
 	public void setProductId(int productId) {
-		this.productId = productId;
+		this.warehouseId = productId;
 	}
 
 	public int getCapacity() {
@@ -47,7 +47,7 @@ public class Warehouses {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(capacity, productId);
+		return Objects.hash(capacity, warehouseId);
 	}
 
 	@Override
@@ -59,12 +59,12 @@ public class Warehouses {
 		if (getClass() != obj.getClass())
 			return false;
 		Warehouses other = (Warehouses) obj;
-		return capacity == other.capacity && productId == other.productId;
+		return capacity == other.capacity && warehouseId == other.warehouseId;
 	}
 
 	@Override
 	public String toString() {
-		return "Warehouses [productId=" + productId + ", capacity=" + capacity + "]";
+		return "Warehouses [productId=" + warehouseId + ", capacity=" + capacity + "]";
 	}
 	
 	

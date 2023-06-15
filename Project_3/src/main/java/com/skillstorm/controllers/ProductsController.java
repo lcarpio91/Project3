@@ -20,7 +20,7 @@ import com.skillstorm.models.Products;
 import com.skillstorm.repositories.ProductsRepository;
 
 @RestController
-@RequestMapping("/Products")
+@RequestMapping("/products")
 @CrossOrigin("*")
 public class ProductsController {
 
@@ -34,15 +34,15 @@ public class ProductsController {
 	}
 
 	// displays product by ID
-//	@GetMapping("/{id}")
-//	public Products getProductById(@PathVariable int id) {
-//		Optional<Products> outcome = repo.findById(id);
-//		if (outcome.isPresent()) {
-//			return outcome.get();
-//		} else {
-//			return null;
-//		}
-//	}
+	@GetMapping("/{id}")
+	public Products getProductById(@PathVariable int id) {
+		Optional<Products> outcome = repo.findById(id);
+		if (outcome.isPresent()) {
+			return outcome.get();
+		} else {
+			return null;
+		}
+	}
 	
 	// displays product by UPC
 	// okay Ernesto I figured it out it works let me know if you like it
@@ -130,14 +130,14 @@ public class ProductsController {
 //	}
 
 	// deletes a product by ID
-//	@DeleteMapping("/id/{id}")
-//	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
-//		if (repo.existsById(id)) {
-//			repo.deleteById(id);
-//			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
-//		} else {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
-//		}
-//	}
+	@DeleteMapping("/id/{id}")
+	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+		if (repo.existsById(id)) {
+			repo.deleteById(id);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
+		}
+	}
 
 }
