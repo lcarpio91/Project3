@@ -23,18 +23,18 @@ public class Warehouses {
 
 	public Warehouses() {}
 
-	public Warehouses(int productId, int capacity) {
+	public Warehouses(int WarehouseId, int capacity) {
 		super();
-		this.warehouseId = productId;
+		this.warehouseId = WarehouseId;
 		this.capacity = capacity;
 	}
 
-	public int getProductId() {
+	public int getWarehouseId() {
 		return this.warehouseId;
 	}
 
-	public void setProductId(int productId) {
-		this.warehouseId = productId;
+	public void setWarehouseId(int WarehouseId) {
+		this.warehouseId = WarehouseId;
 	}
 
 	public int getCapacity() {
@@ -64,7 +64,7 @@ public class Warehouses {
 
 	@Override
 	public String toString() {
-		return "Warehouses [productId=" + warehouseId + ", capacity=" + capacity + "]";
+		return "Warehouses [WarehouseId=" + warehouseId + ", capacity=" + capacity + "]";
 	}
 	
 	

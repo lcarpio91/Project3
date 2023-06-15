@@ -33,16 +33,16 @@ public class ProductsController {
 		return repo.findAll();
 	}
 
-	// displays product by ID
-	@GetMapping("/{id}")
-	public Products getProductById(@PathVariable int id) {
-		Optional<Products> outcome = repo.findById(id);
-		if (outcome.isPresent()) {
-			return outcome.get();
-		} else {
-			return null;
-		}
-	}
+//	// displays product by ID
+//	@GetMapping("/{id}")
+//	public Products getProductById(@PathVariable int id) {
+//		Optional<Products> outcome = repo.findById(id);
+//		if (outcome.isPresent()) {
+//			return outcome.get();
+//		} else {
+//			return null;
+//		}
+//	}
 	
 	// displays product by UPC
 	// okay Ernesto I figured it out it works let me know if you like it
@@ -118,16 +118,16 @@ public class ProductsController {
 //	}
 	
 	// deletes the product by body
-//	@DeleteMapping
-//	public ResponseEntity<Products> deleteProductByBody(@RequestBody Products products) {
-//		if (repo.findById(products.getProductId()).isPresent()
-//				&& products.equals(repo.findById(products.getProductId()).get())) {
-//			repo.delete(products);
-//			return ResponseEntity.status(HttpStatus.ACCEPTED).body(products);
-//		} else {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
-//		}
-//	}
+	@DeleteMapping
+	public ResponseEntity<String> deleteProductByBody(@RequestBody Products products) {
+		if (repo.findById(products.getProductId()).isPresent()
+				&& products.equals(repo.findById(products.getProductId()).get())) {
+			repo.delete(products);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product was deleted.");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to delete product.");
+		}
+	}
 
 	// deletes a product by ID
 	@DeleteMapping("/id/{id}")
