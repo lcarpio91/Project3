@@ -47,14 +47,14 @@ public class ProductsController {
 	// displays product by UPC
 	// okay Ernesto I figured it out it works let me know if you like it
 	// Ernesto is pleasantly surprised
-//	@GetMapping("/upc/{upc}")
-//	public Products getProductByUPC(@PathVariable String upc) {
-//		Iterable<Products> outcomes = repo.findByUPC(upc);
-//		for (Products outcome : outcomes) {
-//			return outcome;
-//		}
-//			return null;
-//		}
+	@GetMapping("/upc/{upc}")
+	public Products getProductByUPC(@PathVariable String upc) {
+		Iterable<Products> outcomes = repo.findByUPC(upc);
+		for (Products outcome : outcomes) {
+			return outcome;
+		}
+			return null;
+		}
 	
 	// adds a product by body
 //	@PostMapping
@@ -77,45 +77,45 @@ public class ProductsController {
 //	}
 
 	// updates a product by body
-//	@PutMapping
-//	public Products updateProduct(@RequestBody Products products) {
-//		return repo.save(products);
-//	}
+	@PutMapping
+	public Products updateProduct(@RequestBody Products products) {
+		return repo.save(products);
+	}
 
 	// updates a product by ID using parameters
-//	@PutMapping("/id/{id}")
-//	public ResponseEntity<Products> updateProduct1(@PathVariable int id,
-//			@RequestParam(name = "productName", required = false) String productName,
-//			@RequestParam(name = "productPrice", required = false) String productPrice,
-//			@RequestParam(name = "quantity", required = false) String quantity,
-//			@RequestParam(name = "upc", required = false) String upc) {
-//
-//		if (repo.findById(id).isPresent()) {
-//
-//			Products temp = repo.findById(id).get();
-//
-//			if (productName != null) {
-//				temp.setProductName(productName);
-//			}
-//
-//			if (productPrice != null) {
-//				temp.setProductPrice(Double.valueOf(productPrice));
-//			}
-//
-//			if (quantity != null) {
-//				temp.setQuantity(Integer.valueOf(quantity));
-//			}
-//			
-//			if(upc != null) {
-//				temp.setUpc(upc);
-//			}
-//			
-//			return ResponseEntity.status(HttpStatus.OK)
-//					.body(repo.save(temp));
-//		} else {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-//		}
-//	}
+	@PutMapping("/id/{id}")
+	public ResponseEntity<Products> updateProduct1(@PathVariable int id,
+			@RequestParam(name = "productName", required = false) String productName,
+			@RequestParam(name = "productPrice", required = false) String productPrice,
+			@RequestParam(name = "quantity", required = false) String quantity,
+			@RequestParam(name = "upc", required = false) String upc) {
+
+		if (repo.findById(id).isPresent()) {
+
+			Products temp = repo.findById(id).get();
+
+			if (productName != null) {
+				temp.setProductName(productName);
+			}
+
+			if (productPrice != null) {
+				temp.setProductPrice(Double.valueOf(productPrice));
+			}
+
+			if (quantity != null) {
+				temp.setQuantity(Integer.valueOf(quantity));
+			}
+			
+			if(upc != null) {
+				temp.setUpc(upc);
+			}
+			
+			return ResponseEntity.status(HttpStatus.OK)
+					.body(repo.save(temp));
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
 	
 	// deletes the product by body
 	@DeleteMapping
@@ -131,12 +131,9 @@ public class ProductsController {
 
 	// deletes a product by ID
 	@DeleteMapping("/id/{id}")
-	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+	public void deleteProductbyId(@PathVariable int id) {
 		if (repo.existsById(id)) {
 			repo.deleteById(id);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
 		}
 	}
 

@@ -23,18 +23,19 @@ public class Warehouses {
 
 	public Warehouses() {}
 
-	public Warehouses(int WarehouseId, int capacity) {
+	public Warehouses(int warehouseId, int capacity) {
 		super();
-		this.warehouseId = WarehouseId;
+		this.warehouseId = warehouseId;
 		this.capacity = capacity;
 	}
 
 	public int getWarehouseId() {
 		return this.warehouseId;
 	}
+  
+	public void setWarehouseId(int warehouseId) {
+		this.warehouseId = warehouseId;
 
-	public void setWarehouseId(int WarehouseId) {
-		this.warehouseId = WarehouseId;
 	}
 
 	public int getCapacity() {
@@ -67,14 +68,6 @@ public class Warehouses {
 		return "Warehouses [WarehouseId=" + warehouseId + ", capacity=" + capacity + "]";
 	}
 	
-	
-	
-	
-
-
-
-
-
 
 
 }
