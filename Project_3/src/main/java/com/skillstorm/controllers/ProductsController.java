@@ -1,5 +1,6 @@
 package com.skillstorm.controllers;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,17 +33,27 @@ public class ProductsController {
 	public Iterable<Products> getAllProducts() {
 		return repo.findAll();
 	}
+	
+	@GetMapping("/w1/{w1}")
+	public ArrayList<Products> getWarehouse1(@PathVariable int w1) {
+		ArrayList<Products> outcomes = (ArrayList<Products>) repo.findByW1ID(w1);
+		if(!outcomes.isEmpty()) {
+			return outcomes;
+		} else {
+			return null;
+		}
+	}
 
-//	// displays product by ID
-//	@GetMapping("/{id}")
-//	public Products getProductById(@PathVariable int id) {
-//		Optional<Products> outcome = repo.findById(id);
-//		if (outcome.isPresent()) {
-//			return outcome.get();
-//		} else {
-//			return null;
-//		}
-//	}
+	// displays product by ID
+	@GetMapping("/{id}")
+	public Products getProductById(@PathVariable int id) {
+		Optional<Products> outcome = repo.findById(id);
+		if (outcome.isPresent()) {
+			return outcome.get();
+		} else {
+			return null;
+		}
+	}
 	
 	// displays product by UPC
 	// okay Ernesto I figured it out it works let me know if you like it
@@ -64,21 +75,7 @@ public class ProductsController {
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
 		}
-//		
-		
-//		if (repo.existsById(warehouse1.getProductId())) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//					.body(warehouse1);
-//		} else {
-//			return ResponseEntity.status(HttpStatus.CREATED)
-//					.body(repo.save(warehouse1));
-//		}
-//	}
-	
-	// test method
-//	@PostMapping
-//	public void addProductv2() {
-//		System.out.println(repo.countProducts(1));
+
 	}
 
 	// updates a product by body
@@ -124,13 +121,13 @@ public class ProductsController {
 	
 	// deletes the product by body
 	@DeleteMapping
-	public ResponseEntity<String> deleteProductByBody(@RequestBody Products products) {
+	public ResponseEntity<Products> deleteProductByBody(@RequestBody Products products) {
 		if (repo.findById(products.getProductId()).isPresent()
 				&& products.equals(repo.findById(products.getProductId()).get())) {
 			repo.delete(products);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product was deleted.");
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(products);
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to delete product.");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
 		}
 	}
 
