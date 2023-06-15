@@ -22,6 +22,10 @@ import { ProductsComponent } from './products/products.component';
 import { Products2Component } from './products2/products2.component';
 import { Products3Component } from './products3/products3.component';
 import { Products4Component } from './products4/products4.component';
+import { Products1detailsComponent } from './productDetails/products1details/products1details.component';
+import { Products2detailsComponent } from './productDetails/products2details/products2details.component';
+import { Products3detailsComponent } from './productDetails/products3details/products3details.component';
+import { Products4detailsComponent } from './productDetails/products4details/products4details.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { Products4Component } from './products4/products4.component';
     ProductsComponent,
     Products2Component,
     Products3Component,
-    Products4Component
+    Products4Component,
+    Products1detailsComponent,
+    Products2detailsComponent,
+    Products3detailsComponent,
+    Products4detailsComponent
   ],
   imports: [
     BrowserModule,
