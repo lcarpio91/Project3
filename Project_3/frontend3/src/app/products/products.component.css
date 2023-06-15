@@ -38,6 +38,9 @@
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
   
   tbody {
@@ -52,5 +55,14 @@
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
+
+  .table-sticky{
+    position: sticky;
+  }
+
+  table th {
+    position: sticky;
+     top: 0; z-index: 10
+    }
   
   
