@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillstorm.models.Warehouse1;
-
-import com.skillstorm.repositories.Warehouse1Repository;
+import com.skillstorm.models.Products;
+import com.skillstorm.repositories.ProductsRepository;
 
 @RestController
 @RequestMapping("/Products")
@@ -26,46 +25,46 @@ import com.skillstorm.repositories.Warehouse1Repository;
 public class ProductsController {
 
 	@Autowired
-	private Warehouse1Repository repo;
+	private ProductsRepository repo;
 
 	// displays all products
 	@GetMapping
-	public Iterable<Warehouse1> getAllProducts() {
+	public Iterable<Products> getAllProducts() {
 		return repo.findAll();
 	}
 
 	// displays product by ID
-	@GetMapping("/{id}")
-	public Warehouse1 getProductById(@PathVariable int id) {
-		Optional<Warehouse1> outcome = repo.findById(id);
-		if (outcome.isPresent()) {
-			return outcome.get();
-		} else {
-			return null;
-		}
-	}
+//	@GetMapping("/{id}")
+//	public Products getProductById(@PathVariable int id) {
+//		Optional<Products> outcome = repo.findById(id);
+//		if (outcome.isPresent()) {
+//			return outcome.get();
+//		} else {
+//			return null;
+//		}
+//	}
 	
 	// displays product by UPC
 	// okay Ernesto I figured it out it works let me know if you like it
 	// Ernesto is pleasantly surprised
-	@GetMapping("/upc/{upc}")
-	public Warehouse1 getProductByUPC(@PathVariable String upc) {
-		Iterable<Warehouse1> outcomes = repo.findByUPC(upc);
-		for (Warehouse1 outcome : outcomes) {
-			return outcome;
-		}
-			return null;
-		}
+//	@GetMapping("/upc/{upc}")
+//	public Products getProductByUPC(@PathVariable String upc) {
+//		Iterable<Products> outcomes = repo.findByUPC(upc);
+//		for (Products outcome : outcomes) {
+//			return outcome;
+//		}
+//			return null;
+//		}
 	
 	// adds a product by body
-	@PostMapping
-	public ResponseEntity<Warehouse1> addProduct(@RequestBody Warehouse1 warehouse1) {
-		// warehouse1.getProductId()
-		if(warehouse1.getProductId() < 2500 && !repo.existsById(warehouse1.getProductId())) {
-			return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(warehouse1));
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(warehouse1);
-		}
+//	@PostMapping
+//	public ResponseEntity<Products> addProduct(@RequestBody Products products) {
+//		// warehouse1.getProductId()
+//		if(products.getProductId() < 2500 && !repo.existsById(products.getProductId())) {
+//			return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(products));
+//		} else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
+//		}
 		
 		
 //		if (repo.existsById(warehouse1.getProductId())) {
@@ -75,70 +74,70 @@ public class ProductsController {
 //			return ResponseEntity.status(HttpStatus.CREATED)
 //					.body(repo.save(warehouse1));
 //		}
-	}
+//	}
 
 	// updates a product by body
-	@PutMapping
-	public Warehouse1 updateProduct(@RequestBody Warehouse1 warehouse1) {
-		return repo.save(warehouse1);
-	}
+//	@PutMapping
+//	public Products updateProduct(@RequestBody Products products) {
+//		return repo.save(products);
+//	}
 
 	// updates a product by ID using parameters
-	@PutMapping("/id/{id}")
-	public ResponseEntity<Warehouse1> updateProduct1(@PathVariable int id,
-			@RequestParam(name = "productName", required = false) String productName,
-			@RequestParam(name = "productPrice", required = false) String productPrice,
-			@RequestParam(name = "quantity", required = false) String quantity,
-			@RequestParam(name = "upc", required = false) String upc) {
-
-		if (repo.findById(id).isPresent()) {
-
-			Warehouse1 temp = repo.findById(id).get();
-
-			if (productName != null) {
-				temp.setProductName(productName);
-			}
-
-			if (productPrice != null) {
-				temp.setProductPrice(Double.valueOf(productPrice));
-			}
-
-			if (quantity != null) {
-				temp.setQuantity(Integer.valueOf(quantity));
-			}
-			
-			if(upc != null) {
-				temp.setUpc(upc);
-			}
-			
-			return ResponseEntity.status(HttpStatus.OK)
-					.body(repo.save(temp));
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-		}
-	}
+//	@PutMapping("/id/{id}")
+//	public ResponseEntity<Products> updateProduct1(@PathVariable int id,
+//			@RequestParam(name = "productName", required = false) String productName,
+//			@RequestParam(name = "productPrice", required = false) String productPrice,
+//			@RequestParam(name = "quantity", required = false) String quantity,
+//			@RequestParam(name = "upc", required = false) String upc) {
+//
+//		if (repo.findById(id).isPresent()) {
+//
+//			Products temp = repo.findById(id).get();
+//
+//			if (productName != null) {
+//				temp.setProductName(productName);
+//			}
+//
+//			if (productPrice != null) {
+//				temp.setProductPrice(Double.valueOf(productPrice));
+//			}
+//
+//			if (quantity != null) {
+//				temp.setQuantity(Integer.valueOf(quantity));
+//			}
+//			
+//			if(upc != null) {
+//				temp.setUpc(upc);
+//			}
+//			
+//			return ResponseEntity.status(HttpStatus.OK)
+//					.body(repo.save(temp));
+//		} else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//		}
+//	}
 	
 	// deletes the product by body
-	@DeleteMapping
-	public ResponseEntity<Warehouse1> deleteProductByBody(@RequestBody Warehouse1 warehouse1) {
-		if (repo.findById(warehouse1.getProductId()).isPresent()
-				&& warehouse1.equals(repo.findById(warehouse1.getProductId()).get())) {
-			repo.delete(warehouse1);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(warehouse1);
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(warehouse1);
-		}
-	}
+//	@DeleteMapping
+//	public ResponseEntity<Products> deleteProductByBody(@RequestBody Products products) {
+//		if (repo.findById(products.getProductId()).isPresent()
+//				&& products.equals(repo.findById(products.getProductId()).get())) {
+//			repo.delete(products);
+//			return ResponseEntity.status(HttpStatus.ACCEPTED).body(products);
+//		} else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(products);
+//		}
+//	}
 
 	// deletes a product by ID
-	@DeleteMapping("/id/{id}")
-	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
-		if (repo.existsById(id)) {
-			repo.deleteById(id);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
-		}
-	}
+//	@DeleteMapping("/id/{id}")
+//	public ResponseEntity<String> deleteProductbyId(@PathVariable int id) {
+//		if (repo.existsById(id)) {
+//			repo.deleteById(id);
+//			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Product with id " + id + " was deleted.");
+//		} else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product with id " + id + " does not exist.");
+//		}
+//	}
 
 }
