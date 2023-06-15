@@ -14,6 +14,7 @@ export class ProductsComponent {
   localWarehouse1: any = [];
   showUpdateForm: boolean = false;
   showAddForm: boolean = false;
+  showDelete: boolean = true;
   selectedProduct: Products | null = null;
   selectedWarehouse: Warehouses | null = null;
 
@@ -75,6 +76,14 @@ updateProduct(): void {
   this.resetForm();
 }
 
+deleteProduct(): void {
+  if(this.selectedProduct) {
+    this.backendService.deleteProductByIdW1P(Number(this.selectedProduct.productId))
+    .subscribe(() => this.getAllProductsW1());
+    this.resetForm();
+  };
+}
+
 chosenProduct(warehouse1: Products): void {
   this.showAddForm = false;
   this.showUpdateForm = true;
@@ -86,6 +95,15 @@ chosenProduct(warehouse1: Products): void {
   this.formUpc = this.selectedProduct.upc;
   this.formWarehouseId = String(this.selectedWarehouse?.warehouseId);
   this.formCapacity = String(this.selectedWarehouse?.capacity);
+}
+
+chosenToDelete(warehouse1: Products): void {
+  this.showDelete = true;
+  this.selectedProduct = { ...warehouse1 };
+  this.formId = String(this.selectedProduct.productId);
+  this.backendService.deleteProductByIdW1P(Number(this.formId)).subscribe(() => this.getAllProductsW1());
+
+  this.resetForm();
 }
 
 resetFormAdd(): void {

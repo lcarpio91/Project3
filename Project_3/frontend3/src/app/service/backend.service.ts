@@ -49,7 +49,7 @@ export class BackendService {
                               { observe: 'response'});
   }
 
-  deleteProductByIdW1P(productId: Products): Observable<HttpResponse<any>> {
+  deleteProductByIdW1P(productId: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(this.ulr + this.products + 'id/' + productId,
                                 { observe: 'response'});
   }
