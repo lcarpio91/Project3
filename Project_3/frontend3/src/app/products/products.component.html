@@ -13,7 +13,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>UPC</th>
-                                    <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd()">add</button>
+                                    <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd();">add</button>
                                 </tr>
                             </thead>
                         </table>
@@ -52,6 +52,8 @@
                     <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
                     <label for="warehousesId">Warehouse ID: </label>
                     <input type="number" id="warehousesId" name="formWarehouseId" [(ngModel)]="formWarehouseId">
+                    <label for="capacity">Capacity: </label>
+                    <input type="number" id="capacity" name="formCapacity" [(ngModel)]="formCapacity">
 
                     <button (click)="addNewProduct()">Add new product</button>
                     <button (click)="resetForm()">Cancel</button>
