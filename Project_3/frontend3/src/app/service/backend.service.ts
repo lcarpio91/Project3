@@ -30,7 +30,7 @@ export class BackendService {
    */
 
   getWarehouse1(warehousesId: Number): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + 'w1/' + warehousesId,
+    return this.http.get<any>(this.ulr + 'products/w1/' + warehousesId,
                              { observe: 'response'})
   }
 
