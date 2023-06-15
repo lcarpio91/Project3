@@ -19,6 +19,9 @@ import { Warehouse2detailsComponent } from './productDetails/warehouse2details/w
 import { Warehouse3detailsComponent } from './productDetails/warehouse3details/warehouse3details.component';
 import { Warehouse4detailsComponent } from './productDetails/warehouse4details/warehouse4details.component';
 import { ProductsComponent } from './products/products.component';
+import { Products2Component } from './products2/products2.component';
+import { Products3Component } from './products3/products3.component';
+import { Products4Component } from './products4/products4.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { ProductsComponent } from './products/products.component';
     Warehouse2detailsComponent,
     Warehouse3detailsComponent,
     Warehouse4detailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    Products2Component,
+    Products3Component,
+    Products4Component
   ],
   imports: [
     BrowserModule,
