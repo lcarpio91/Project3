@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BackendService } from '../service/backend.service';
-import { Warehouse3 } from '../model/warehouse3';
+import { BackendService } from '../../service/backend.service';
+import { Warehouse3 } from '../../model/warehouse3';
 import { Router } from '@angular/router';
 
 

@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { BackendService } from '../service/backend.service';
-import { Warehouse2 } from '../model/warehouse2';
+import { BackendService } from '../../service/backend.service';
+import { Warehouse4 } from '../../model/warehouse4';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-warehouse2',
-  templateUrl: './warehouse2.component.html',
-  styleUrls: ['./warehouse2.component.css']
+  selector: 'app-warehouse4',
+  templateUrl: './warehouse4.component.html',
+  styleUrls: ['./warehouse4.component.css']
 })
-export class Warehouse2Component {
-  localWarehouse2: any = [];
+export class Warehouse4Component {
+  localWarehouse4: any = [];
   showUpdateForm: boolean = false;
   showAddForm: boolean = false;
-  selectedProduct: Warehouse2 | null = null;
+  selectedProduct: Warehouse4 | null = null;
 
   choseProductId: number = 0;
   formId: string = '';
@@ -24,49 +23,49 @@ export class Warehouse2Component {
 
   constructor(private backendService: BackendService,
               private router: Router) {
-   this.getAllProductsW2();
+   this.getAllProductsW4();
   }
 
-  getAllProductsW2(): void {
-    this.localWarehouse2 = [];
-    this.backendService.getAllProductsW2().subscribe((data) => {
+  getAllProductsW4(): void {
+    this.localWarehouse4 = [];
+    this.backendService.getAllProductsW4().subscribe((data) => {
 
-   
+     
       for(let warehouse1 of data.body) {
-        this.localWarehouse2.push(new Warehouse2(warehouse1.productId,
+        this.localWarehouse4.push(new Warehouse4(warehouse1.productId,
                                                  warehouse1.productName,
                                                  warehouse1.productPrice,
                                                  warehouse1.quantity,
                                                  warehouse1.upc));
-     
+      
 
       }
     });
   }
 
   getProductDetails(productId: number): void {
-    this.router.navigate(['warehouse2/details/' + productId]);
+    this.router.navigate(['warehouse4/details/' + productId]);
   }
 
   addNewProduct(): void {
-    this.backendService.addProductByBodyW2(new Warehouse2(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc))
-        .subscribe(() => this.getAllProductsW2());
+    this.backendService.addProductByBodyW4(new Warehouse4(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc))
+        .subscribe(() => this.getAllProductsW4());
        this.resetForm();
   }
 
-    updateProduct(): void {
-    this.backendService.updateProductW2(new Warehouse2( Number(this.formId),
+  updateProduct(): void {
+    this.backendService.updateProductW4(new Warehouse4( Number(this.formId),
                                                         this.formName,
                                                         Number(this.formPrice),
                                                         Number(this.formQuantity),
-                                                        this.formUpc)).subscribe(() => this.getAllProductsW2());
+                                                        this.formUpc)).subscribe(() => this.getAllProductsW4());
     this.resetForm();
   }
 
-    chosenProduct(warehouse2: Warehouse2): void {
+  chosenProduct(warehouse4: Warehouse4): void {
     this.showAddForm = false;
     this.showUpdateForm = true;
-    this.selectedProduct = { ...warehouse2 };
+    this.selectedProduct = { ...warehouse4 };
     this.formId = String(this.selectedProduct.productId);
     this.formName = this.selectedProduct.productName;
     this.formPrice = String(this.selectedProduct.productPrice);
@@ -74,7 +73,7 @@ export class Warehouse2Component {
     this.formUpc = this.selectedProduct.upc;
   }
 
-    resetForm(): void {
+  resetForm(): void {
     this.showAddForm = false; 
     this.showUpdateForm = false;
     this.formId = '';
@@ -82,9 +81,5 @@ export class Warehouse2Component {
     this.formPrice = '';
     this.formQuantity = '';
     this.formUpc = '';
-  }
-
-    cancelForm(): void {
-    this.resetForm();
   }
 }

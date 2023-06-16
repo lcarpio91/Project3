@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
-import { BackendService } from '../service/backend.service';
-import { Warehouse4 } from '../model/warehouse4';
+import { BackendService } from '../../service/backend.service';
+import { Warehouse1 } from '../../model/warehouse1';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-warehouse4',
-  templateUrl: './warehouse4.component.html',
-  styleUrls: ['./warehouse4.component.css']
+  selector: 'app-warehouse1',
+  templateUrl: './warehouse1.component.html',
+  styleUrls: ['./warehouse1.component.css']
 })
-export class Warehouse4Component {
-  localWarehouse4: any = [];
+export class Warehouse1Component {
+
+  localWarehouse1: any = [];
   showUpdateForm: boolean = false;
   showAddForm: boolean = false;
-  selectedProduct: Warehouse4 | null = null;
+  selectedProduct: Warehouse1 | null = null;
 
   choseProductId: number = 0;
   formId: string = '';
@@ -23,16 +24,16 @@ export class Warehouse4Component {
 
   constructor(private backendService: BackendService,
               private router: Router) {
-   this.getAllProductsW4();
+    this.getAllProductsW1();
   }
 
-  getAllProductsW4(): void {
-    this.localWarehouse4 = [];
-    this.backendService.getAllProductsW4().subscribe((data) => {
+  getAllProductsW1(): void {
+    this.localWarehouse1 = [];
+    this.backendService.getAllProductsW1().subscribe((data) => {
 
      
       for(let warehouse1 of data.body) {
-        this.localWarehouse4.push(new Warehouse4(warehouse1.productId,
+        this.localWarehouse1.push(new Warehouse1(warehouse1.productId,
                                                  warehouse1.productName,
                                                  warehouse1.productPrice,
                                                  warehouse1.quantity,
@@ -44,33 +45,41 @@ export class Warehouse4Component {
   }
 
   getProductDetails(productId: number): void {
-    this.router.navigate(['warehouse4/details/' + productId]);
+    this.router.navigate(['warehouse1/details/' + productId]);
   }
 
   addNewProduct(): void {
-    this.backendService.addProductByBodyW4(new Warehouse4(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc))
-        .subscribe(() => this.getAllProductsW4());
+    this.backendService.addProductByBodyW1(new Warehouse1(0, this.formName, Number (this.formPrice), Number (this.formQuantity), this.formUpc))
+        .subscribe(() => this.getAllProductsW1());
        this.resetForm();
   }
 
   updateProduct(): void {
-    this.backendService.updateProductW4(new Warehouse4( Number(this.formId),
+    this.backendService.updateProductW1(new Warehouse1( Number(this.formId),
                                                         this.formName,
                                                         Number(this.formPrice),
                                                         Number(this.formQuantity),
-                                                        this.formUpc)).subscribe(() => this.getAllProductsW4());
+                                                        this.formUpc)).subscribe(() => this.getAllProductsW1());
     this.resetForm();
   }
 
-  chosenProduct(warehouse4: Warehouse4): void {
+  chosenProduct(warehouse1: Warehouse1): void {
     this.showAddForm = false;
     this.showUpdateForm = true;
-    this.selectedProduct = { ...warehouse4 };
+    this.selectedProduct = { ...warehouse1 };
     this.formId = String(this.selectedProduct.productId);
     this.formName = this.selectedProduct.productName;
     this.formPrice = String(this.selectedProduct.productPrice);
     this.formQuantity = String(this.selectedProduct.quantity);
     this.formUpc = this.selectedProduct.upc;
+  }
+
+  resetFormAdd(): void {
+    this.formId = '';
+    this.formName = '';
+    this.formPrice = '';
+    this.formQuantity = '';
+    this.formUpc = '';
   }
 
   resetForm(): void {
@@ -82,4 +91,6 @@ export class Warehouse4Component {
     this.formQuantity = '';
     this.formUpc = '';
   }
+
+
 }
