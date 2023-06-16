@@ -13,7 +13,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>UPC</th>
-                                    <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd();">add</button>
+                                    <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd();;">add</button>
                                 </tr>
                             </thead>
                         </table>
@@ -30,8 +30,12 @@
                                         <td>{{ warehouse2.productPrice }}</td>
                                         <td>{{ warehouse2.quantity }}</td>
                                         <td>{{ warehouse2.upc }}</td>
-                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse2)">update</button></td>
-                                        <td><button (click)="chosenToDelete(warehouse2)">delete</button></td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse2)">
+                                            <img src="assets/wrench.png" alt="update" style="width: 20px; height: 20px;">
+                                        </button></td>
+                                        <td><button (click)="chosenToDelete(warehouse2)">
+                                            <img src="assets/trashcan.png" alt="delete" style="width: 25px; height: 25px;">
+                                        </button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
