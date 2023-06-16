@@ -59,7 +59,7 @@ export class Products4Component {
   addNewProduct(): void {
 
     this.backendService.addProductByBodyW4P(new Products(0, this.formName, Number(this.formPrice), Number(this.formQuantity), this.formUpc,
-                                          new Warehouses(1, 2500)))
+                                          new Warehouses(4, 2500)))
         .subscribe(() => this.getAllProductsW4());
   
        this.resetForm();
@@ -71,7 +71,7 @@ export class Products4Component {
                                                         Number(this.formPrice),
                                                         Number(this.formQuantity),
                                                         this.formUpc,
-                                        new Warehouses(1, 2500))).subscribe(() => this.getAllProductsW4());
+                                        new Warehouses(4, 2500))).subscribe(() => this.getAllProductsW4());
     
     this.resetForm();
   }

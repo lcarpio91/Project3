@@ -5,13 +5,13 @@ import { Products } from '../model/products';
 import { Warehouses } from '../model/warehouses';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-products3',
+  templateUrl: './products3.component.html',
+  styleUrls: ['./products3.component.css']
 })
 export class Products3Component {
 
-  localWarehouse1: any = [];
+  localWarehouse3: any = [];
   showUpdateForm: boolean = false;
   showAddForm: boolean = false;
   showDelete: boolean = true;
@@ -29,23 +29,23 @@ export class Products3Component {
 
   constructor(private backendService: BackendService,
   private router: Router) {
-  this.getAllProductsW1();
+  this.getAllProductsW3();
 }
 
-getAllProductsW1(): void {
-  this.localWarehouse1 = [];
-  const warehouseId: number = 1;
+getAllProductsW3(): void {
+  this.localWarehouse3 = [];
+  const warehouseId: number = 3;
 
-  this.backendService.getWarehouse1(warehouseId).subscribe((data) => {
+  this.backendService.getWarehouse3(warehouseId).subscribe((data) => {
 
-    for(let warehouse1 of data.body) {
-      this.localWarehouse1.push(new Products(warehouse1.productId,
-                                               warehouse1.productName,
-                                               warehouse1.productPrice,
-                                               warehouse1.quantity,
-                                               warehouse1.upc,
-                                               new Warehouses(warehouse1.warehouses.warehousesId,
-                                                            warehouse1.warehouses.capacity)));
+    for(let warehouse3 of data.body) {
+      this.localWarehouse3.push(new Products(warehouse3.productId,
+                                               warehouse3.productName,
+                                               warehouse3.productPrice,
+                                               warehouse3.quantity,
+                                               warehouse3.upc,
+                                               new Warehouses(warehouse3.warehouses.warehousesId,
+                                                            warehouse3.warehouses.capacity)));
    
 
     }
@@ -53,14 +53,14 @@ getAllProductsW1(): void {
 }
 
 getProductDetails(productId: number): void {
-  this.router.navigate(['products1/details/' + productId]);
+  this.router.navigate(['products3/details/' + productId]);
 }
 
 addNewProduct(): void {
 
-  this.backendService.addProductByBodyW1P(new Products(0, this.formName, Number(this.formPrice), Number(this.formQuantity), this.formUpc,
-                                        new Warehouses(1, 2500)))
-      .subscribe(() => this.getAllProductsW1());
+  this.backendService.addProductByBodyW3P(new Products(0, this.formName, Number(this.formPrice), Number(this.formQuantity), this.formUpc,
+                                        new Warehouses(3, 2500)))
+      .subscribe(() => this.getAllProductsW3());
 
      this.resetForm();
 }
@@ -71,7 +71,7 @@ updateProduct(): void {
                                                       Number(this.formPrice),
                                                       Number(this.formQuantity),
                                                       this.formUpc,
-                                      new Warehouses(1, 2500))).subscribe(() => this.getAllProductsW1());
+                                      new Warehouses(3, 2500))).subscribe(() => this.getAllProductsW3());
   
   this.resetForm();
 }
@@ -79,7 +79,7 @@ updateProduct(): void {
 deleteProduct(): void {
   if(this.selectedProduct) {
     this.backendService.deleteProductByIdW1P(Number(this.selectedProduct.productId))
-    .subscribe(() => this.getAllProductsW1());
+    .subscribe(() => this.getAllProductsW3());
     this.resetForm();
   };
 }
@@ -101,7 +101,7 @@ chosenToDelete(warehouse3: Products): void {
   this.showDelete = true;
   this.selectedProduct = { ...warehouse3 };
   this.formId = String(this.selectedProduct.productId);
-  this.backendService.deleteProductByIdW1P(Number(this.formId)).subscribe(() => this.getAllProductsW1());
+  this.backendService.deleteProductByIdW1P(Number(this.formId)).subscribe(() => this.getAllProductsW3());
 
   this.resetForm();
 }

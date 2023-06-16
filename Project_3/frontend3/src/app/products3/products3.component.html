@@ -23,15 +23,15 @@
                     <div class="table-body">
                         <table>
                             <tbody>
-                                <ng-container *ngFor="let warehouse1 of localWarehouse1">
+                                <ng-container *ngFor="let warehouse3 of localWarehouse3">
                                     <tr>
-                                        <td class="my-button" (click)="getProductDetails(warehouse1.productId)">{{ warehouse3.productId }}</td>
+                                        <td class="my-button" (click)="getProductDetails(warehouse3.productId)">{{ warehouse3.productId }}</td>
                                         <td>{{ warehouse3.productName}}</td>
                                         <td>{{ warehouse3.productPrice }}</td>
                                         <td>{{ warehouse3.quantity }}</td>
                                         <td>{{ warehouse3.upc }}</td>
-                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse1)">update</button></td>
-                                        <td><button (click)="chosenToDelete(warehouse1)">delete</button></td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse3)">update</button></td>
+                                        <td><button (click)="chosenToDelete(warehouse3)">delete</button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
