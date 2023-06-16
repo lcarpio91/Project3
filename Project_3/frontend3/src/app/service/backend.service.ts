@@ -136,7 +136,7 @@ export class BackendService {
                                 { observe: 'response'});
     }
   
-    deleteProductByIdW4P(productId: Products): Observable<HttpResponse<any>> {
+    deleteProductByIdW4P(productId: number): Observable<HttpResponse<any>> {
       return this.http.delete<any>(this.ulr + this.products + 'id/' + productId,
                                   { observe: 'response'});
     }

@@ -14,7 +14,11 @@ import { Warehouse4detailsComponent } from './productDetails/warehouse4details/w
 import { ProductsComponent } from './products/products.component';
 import { Products1detailsComponent } from './productDetails/products1details/products1details.component';
 import { Products2detailsComponent } from './productDetails/products2details/products2details.component';
+import { Products3detailsComponent } from './productDetails/products3details/products3details.component';
+import { Products4detailsComponent } from './productDetails/products4details/products4details.component';
 import { Products2Component } from './products2/products2.component';
+import { Products3Component } from './products3/products3.component';
+import { Products4Component } from './products4/products4.component';
 
 
 const routes: Routes = [
@@ -30,9 +34,13 @@ const routes: Routes = [
   {path:'warehouse3/details/:id', component: Warehouse3detailsComponent},
   {path:'warehouse4/details/:id', component: Warehouse4detailsComponent},
   {path:'products', component: ProductsComponent },
+  {path:'products2', component: Products2Component},
+  {path:'products3', component: Products3Component},
+  {path:'products4', component: Products4Component},
   {path:'products1/details/:id', component: Products1detailsComponent},
-  {path:'products2', component: Products2Component },
-  {path:'products2/details/:id', component: Products2detailsComponent}
+  {path:'products2/details/:id', component: Products2detailsComponent},
+  {path:'products3/details/:id', component: Products3detailsComponent},
+  {path:'products4/details/:id', component: Products4detailsComponent}
 ];
 
 @NgModule({
