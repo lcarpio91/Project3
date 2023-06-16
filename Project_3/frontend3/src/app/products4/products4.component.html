@@ -1,90 +1,94 @@
 <section class="warehouse4">
     <div class="container">
-        <div class="row">
-            <div style="display: flex;" class="col">
-                <div class="table-container">
-                        <h1 class="text-center">Warehouse 4</h1>
-                        <!-- <div class="table-header"> -->
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Product ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>UPC</th>
-                                    <th style="vertical-align: middle;">  <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd();">
-                                        <img src="assets/plusicon.png" alt="add" style="width: 10px; height: 10px;">
-                                    </button></th>
-                                    <!-- <td style="vertical-align: middle;"> -->
-                                      
-                                    
-                                </tr>
-                            </thead>
-                        <!-- </table> -->
-                        
-                    <!-- </div> -->
-                    
-                    <!-- <div class="table-body"> -->
-                        <!-- <table> -->
-                            <tbody>
-                                <ng-container *ngFor="let warehouse4 of localWarehouse4">
-                                    <tr>
-                                        <td class="my-button" (click)="getProductDetails(warehouse4.productId)">{{ warehouse4.productId }}</td>
-                                        <td>{{ warehouse4.productName}}</td>
-                                        <td>{{ warehouse4.productPrice }}</td>
-                                        <td>{{ warehouse4.quantity }}</td>
-                                        <td>{{ warehouse4.upc }}</td>
-                                        <td>
-                                        <button (click)="showUpdateForm; chosenProduct(warehouse4)">
-                                            <img src="assets/wrench.png" alt="update" style="width: 20px; height: 20px;">
-                                        </button>
-                                        <button (click)="chosenToDelete(warehouse4)">
-                                            <img src="assets/trashcan.png" alt="delete" style="width: 25px; height: 25px;">
-                                        </button>
-                                    </td>
-                                    </tr>
-                                </ng-container>
-                            </tbody>
-                        </table>
-                    <!-- </div> -->
-                </div>
+      <div class="row">
+        <div class="col">
+          <div class="scroll-container">
+            <h1 class="text-center">Warehouse 4</h1>
+            <div class="table-container">
+              <table class="table-sticky">
+                <thead>
+                  <tr>
+                    <th style="width: 75px;">ID</th>
+                    <th style="width: 758px;">Name</th>
+                    <th style="width: 88px;">Price</th>
+                    <th style="width: 75px;">Qty</th>
+                    <th style="width: 130px;">UPC</th>
+                    <th style="vertical-align: middle;">
+                      <button (click)="showAddForm = true; showUpdateForm = false; resetFormAdd();">
+                        <img src="assets/plusicon.png" alt="add" style="width: 10px; height: 10px;">
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+              </table>
             </div>
-            <div class="col">
-             
-                <form *ngIf="showAddForm"> 
-                    <h4>Add new product</h4>
-                    <label for="name">Product name: </label>
-                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
-                    <label for="price">Product price: </label>
-                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
-                    <label for="quantity">Quantity: </label>
-                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
-                    <label for="upc">UPC: </label>
-                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
-
-                    <button (click)="addNewProduct()">Add new product</button>
-                    <button (click)="resetForm()">Cancel</button>
-                </form>
-                <br>
-                <form *ngIf="showUpdateForm">
-                    <h4>Update Product</h4>
-                    <label for="productId">ID: </label>
-                    <span id="productId">{{ formId }}</span>
-                    <label for="name">Product name: </label>
-                    <input type="text" id="name" name="formName" [(ngModel)]="formName">
-                    <label for="price">Product price: </label>
-                    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
-                    <label for="quantity">Quantity: </label>
-                    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
-                    <label for="upc">UPC: </label>
-                    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
-
-                    <button (click)="updateProduct()">Update</button>
-                    <button (click)="resetForm()">Cancel</button>
-                </form>
+  
+            <div class="table-body">
+              <div class="table-scroll">
+                <table>
+                  <tbody>
+                    <ng-container *ngFor="let warehouse4 of localWarehouse4">
+                      <tr>
+                        <td class="my-button" (click)="getProductDetails(warehouse4.productId)">{{ warehouse4.productId }}</td>
+                        <td>{{ warehouse4.productName}}</td>
+                        <td>{{ warehouse4.productPrice }}</td>
+                        <td>{{ warehouse4.quantity }}</td>
+                        <td>{{ warehouse4.upc }}</td>
+                        <td style="vertical-align: middle;">
+                          <button (click)="showUpdateForm; chosenProduct(warehouse4)">
+                            <img src="assets/wrench.png" alt="update" style="width: 20px; height: 20px;">
+                          </button>
+                        </td>
+                        <td style="vertical-align: middle;">
+                          <button (click)="chosenToDelete(warehouse4)">
+                            <img src="assets/trashcan.png" alt="delete" style="width: 25px; height: 25px;">
+                          </button>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col">
+            
+  <form *ngIf="showAddForm"> 
+    <h4>Add new product</h4>
+    <label for="name" style="padding: 10px;">Product name: </label>
+    <input type="text" id="name" name="formName" [(ngModel)]="formName">
+    <label for="price" style="padding: 10px;">Product price: </label>
+    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
+    <label for="quantity" style="padding: 10px;">Qty: </label>
+    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
+    <label for="upc" style="padding: 10px;">UPC: </label>
+    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+    <button style="margin-left: 10px;" (click)="addNewProduct()">Add new product</button>
+    <button (click)="resetForm()">Cancel</button>
+</form>
+<br>
+<form *ngIf="showUpdateForm">
+    <h4>Update Product</h4>
+    <!-- <label style="padding: 10px;" for="productId">ID: </label> -->
+    <!-- <span style="background-color: aliceblue;" id="productId">{{ formId }}</span> -->
+    <label style="padding: 10px;" for="name">Product name: </label>
+    <input type="text" id="name" name="formName" [(ngModel)]="formName">
+    <label style="padding: 10px;" for="price">Product price: </label>
+    <input type="number" id="price" name="formPrice" [(ngModel)]="formPrice">
+    <label style="padding: 10px;" for="quantity">Qty: </label>
+    <input type="number" id="quantity" name="formQuantity" [(ngModel)]="formQuantity">
+    <label style="padding: 10px;" for="upc">UPC: </label>
+    <input type="text" id="upc" name="formUpc" [(ngModel)]="formUpc">
+
+    <button style="margin-left: 10px;" (click)="updateProduct()">Update Product</button>
+    <button (click)="resetForm()">Cancel</button>
+</form>
+  
+        </div>
+      </div>
     </div>
-    
-</section>
+  </section>
+  
+
