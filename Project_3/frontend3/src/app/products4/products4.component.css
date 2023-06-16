@@ -2,8 +2,8 @@
     background-color: rgb(206, 246, 246);
   }
   
-  .scroll-container {
-    display: block;
+  .table-container {
+    /* display: block; */
     max-height: 750px;
     overflow: auto;
   }
@@ -56,11 +56,16 @@
     border-bottom: 1px solid #ddd;
   }
 
-  .table-sticky{
-    position: sticky;
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
   }
 
   table th {
     position: sticky;
      top: 0; z-index: 10
+    }
+
+    .table-container tbody {
+      font-size: 14px;
     }
