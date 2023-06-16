@@ -31,7 +31,7 @@ export class BackendService {
    */
 
   getWarehouse1(warehousesId: Number): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + this.products + 'w1/' + warehousesId,
+    return this.http.get<any>(this.ulr + this.products + 'w/' + warehousesId,
                              { observe: 'response'})
   }
 
@@ -60,7 +60,7 @@ export class BackendService {
    */
 
     getWarehouse2(warehousesId: Number): Observable<HttpResponse<any>> {
-      return this.http.get<any>(this.ulr + this.products + 'w2/' + warehousesId,
+      return this.http.get<any>(this.ulr + this.products + 'w/' + warehousesId,
                                { observe: 'response'})
     }
   
@@ -89,7 +89,7 @@ export class BackendService {
    */
 
   getWarehouse3(warehousesId: Number): Observable<HttpResponse<any>> {
-    return this.http.get<any>(this.ulr + this.products + 'w3/' + warehousesId,
+    return this.http.get<any>(this.ulr + this.products + 'w/' + warehousesId,
                              { observe: 'response'})
   }
 
@@ -118,7 +118,7 @@ export class BackendService {
    */
 
     getWarehouse4(warehousesId: Number): Observable<HttpResponse<any>> {
-      return this.http.get<any>(this.ulr + this.products + 'w4/' + warehousesId,
+      return this.http.get<any>(this.ulr + this.products + 'w/' + warehousesId,
                                { observe: 'response'})
     }
   

@@ -1,11 +1,11 @@
-<!-- <section class="warehouse1">
+<section class="warehouse2">
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="scroll-container">
-                    <div class="table-header">
-                        <h1 class="text-center">Warehouse 1</h1>
-                        <table>
+                        <h1 class="text-center">Warehouse 2</h1>
+                        <div class="table-header">
+                        <table class="table-sticky">
                             <thead>
                                 <tr>
                                     <th>Product ID</th>
@@ -17,6 +17,7 @@
                                 </tr>
                             </thead>
                         </table>
+                        
                     </div>
                     
                     <div class="table-body">
@@ -29,8 +30,8 @@
                                         <td>{{ warehouse2.productPrice }}</td>
                                         <td>{{ warehouse2.quantity }}</td>
                                         <td>{{ warehouse2.upc }}</td>
-                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse1)">update</button></td>
-                                        <td><button>delete</button></td>
+                                        <td><button (click)="showUpdateForm; chosenProduct(warehouse2)">update</button></td>
+                                        <td><button (click)="chosenToDelete(warehouse2)">delete</button></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -75,4 +76,4 @@
         </div>
     </div>
     
-</section> -->
+</section>
