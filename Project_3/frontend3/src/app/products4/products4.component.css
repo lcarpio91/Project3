@@ -30,11 +30,11 @@
     border-collapse: collapse;
   }
   
-  thead {
+  .table-container thead {
     background-color: #f2f2f2;
   }
   
-  th {
+  .table-container th {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -43,26 +43,22 @@
     z-index: 10;
   }
   
-  tbody {
-    font-size: 14px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    /* white-space: nowrap; */
-  }
-
   .table-container tbody {
     font-size: 14px;
     display: block;
     max-height: 600px; /* Set the desired height for the scrollable area */
     overflow-y: auto;
   }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+  } */
 
   .table-container tr {
     display: flex;
