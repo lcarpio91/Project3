@@ -54,18 +54,21 @@
   td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    /* white-space: nowrap; */
   }
 
-  .table-container table {
-    width: 100%;
-    border-collapse: collapse;
+  .table-container tbody {
+    font-size: 14px;
+    display: block;
+    max-height: 600px; /* Set the desired height for the scrollable area */
+    overflow-y: auto;
   }
 
-  table th {
-    position: sticky;
-     top: 0; z-index: 10
-    }
+  .table-container tr {
+    display: flex;
+  }
 
-    .table-container tbody {
-      font-size: 14px;
-    }
+  .table-container td {
+    flex: 1;
+    white-space: nowrap;
+  }
